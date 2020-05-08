@@ -15,4 +15,12 @@ This lab includes `register file`, `memory`, and `FIFO queue` modules.
 
 This lab includes `Single Cycle CPU`, which is made up of `ALU`, `control unit`, `instructions memory`, `data memory` and so on, as well as a `DBU`(Debug Unit).
 
+The `Single Cycle CPU` here only contains these instructions:
+1. ADD
+2. ADDI
+3. LW
+4. SW
+5. BEQ
+6. J
+
 The `DBU` can display some specific data(like `memory`, `register file`, `alu_y` .etc) through nixietubes and some `control signal` through the LEDs.

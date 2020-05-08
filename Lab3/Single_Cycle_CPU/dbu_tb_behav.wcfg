@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="dbu_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="dbu_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="109615fs"></ZoomStartTime>
+      <ZoomEndTime time="189316fs"></ZoomEndTime>
+      <Cursor1Time time="144815fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="161"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/dbu_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/sel" type="array">
+      <obj_property name="ElementShortName">sel[2:0]</obj_property>
+      <obj_property name="ObjectShortName">sel[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/succ" type="logic">
+      <obj_property name="ElementShortName">succ</obj_property>
+      <obj_property name="ObjectShortName">succ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/step_edge" type="logic">
+      <obj_property name="ElementShortName">step_edge</obj_property>
+      <obj_property name="ObjectShortName">step_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/inc_edge" type="logic">
+      <obj_property name="ElementShortName">inc_edge</obj_property>
+      <obj_property name="ObjectShortName">inc_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dec_edge" type="logic">
+      <obj_property name="ElementShortName">dec_edge</obj_property>
+      <obj_property name="ObjectShortName">dec_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/addr" type="array">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/cpu_clk" type="logic">
+      <obj_property name="ElementShortName">cpu_clk</obj_property>
+      <obj_property name="ObjectShortName">cpu_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_pc" type="array">
+      <obj_property name="ElementShortName">dbu_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_pc[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/cpu_one_circle/instr" type="array">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/mem_rf" type="logic">
+      <obj_property name="ElementShortName">mem_rf</obj_property>
+      <obj_property name="ObjectShortName">mem_rf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_rf_data" type="array">
+      <obj_property name="ElementShortName">dbu_rf_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_rf_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_mem_data" type="array">
+      <obj_property name="ElementShortName">dbu_mem_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_mem_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_instr" type="array">
+      <obj_property name="ElementShortName">dbu_instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_alu_y" type="array">
+      <obj_property name="ElementShortName">dbu_alu_y[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_alu_y[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/dbu_led" type="array">
+      <obj_property name="ElementShortName">dbu_led[11:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_led[11:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+</wave_config>

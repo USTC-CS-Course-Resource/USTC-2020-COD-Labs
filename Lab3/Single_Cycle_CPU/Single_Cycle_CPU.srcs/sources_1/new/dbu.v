@@ -44,7 +44,8 @@ module dbu(
     wire [31:0] dbu_rf_rd2;
     wire [31:0] dbu_alu_y;
     wire [31:0] dbu_mem_rd;
-    wire [11:0] dbu_led;
+    wire [11:0] dbu_status;
+    wire dbu_run;
     
     reg [31:0] value;
     
@@ -56,7 +57,7 @@ module dbu(
     wire step_edge;
     edge_taker #(.N(1)) inc_edge_taker(.clk(clk), .rst(rst), .in(inc), .out(inc_edge));
     edge_taker #(.N(1)) dec_edge_taker(.clk(clk), .rst(rst), .in(dec), .out(dec_edge));
-    edge_taker #(.N(1)) step_edge_taker(.clk(clk), .rst(rst), .in(step), .out(step_edge));
+    edge_taker #(.N(1)) step_edge_taker(.clk(clk), .rst(rst), .in(step), .out(dbu_run));
     always @(posedge clk, posedge rst) begin
         if(rst) begin
             addr <= 4'b0000;
@@ -67,14 +68,12 @@ module dbu(
         end
     end
     
-    wire cpu_clk;
-    assign cpu_clk = succ == 1'b1 ? clk : step_edge;
-    cpu_one_circle cpu_one_circle(.clk(cpu_clk), .rst(rst),
+    cpu_one_circle cpu_one_circle(.clk(clk), .rst(rst), .dbu_run(dbu_run | succ),
                                   .dbu_mem_rf_addr(dbu_mem_rf_addr), .dbu_rf_data(dbu_rf_data), .dbu_mem_data(dbu_mem_data),
                                   .dbu_pc_in(dbu_pc_in), .dbu_pc(dbu_pc), .dbu_instr(dbu_instr),
                                   .dbu_rf_rd1(dbu_rf_rd1), .dbu_rf_rd2(dbu_rf_rd2), .dbu_alu_y(dbu_alu_y), .dbu_mem_rd(dbu_mem_rd),
-                                  .dbu_led(dbu_led));
-    assign led = dbu_led;
+                                  .dbu_status(dbu_status));
+    assign led = sel == 3'b000 ? dbu_mem_rf_addr : dbu_status;
     nixietube nixietube(.clk(clk), .rst(rst), .value(value), .an(an), .seg(seg));
     
     always @(*) begin

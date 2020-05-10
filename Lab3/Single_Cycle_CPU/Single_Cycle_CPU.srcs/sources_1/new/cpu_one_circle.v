@@ -33,6 +33,7 @@ module cpu_one_circle
     (
     input clk,  // 时钟, 上升沿有效
     input rst,   // 异步复位, 高电平有效
+    input dbu_run,
     input [31:0] dbu_mem_rf_addr,
     output [31:0] dbu_rf_data,
     output [31:0] dbu_mem_data,
@@ -43,7 +44,7 @@ module cpu_one_circle
     output [31:0] dbu_rf_rd2,
     output [31:0] dbu_alu_y,
     output [31:0] dbu_mem_rd,
-    output [11:0] dbu_led
+    output [11:0] dbu_status
     );
     
     // 数据线
@@ -81,7 +82,7 @@ module cpu_one_circle
     assign dbu_rf_rd2 = rf_rd2;
     assign dbu_alu_y = alu_y;
     assign dbu_mem_rd = mem_rd;
-    assign dbu_led = {opcode == J_op, opcode == BEQ_op, reg_dst, reg_write,
+    assign dbu_status = {opcode == J_op, opcode == BEQ_op, reg_dst, reg_write,
                       mem_read, mem_to_reg, mem_write, alu_op,
                       alu_src, alu_zero};
     
@@ -97,7 +98,7 @@ module cpu_one_circle
                                 .ra1(instr[25:21]), .rd1(rf_rd1),
                                 .ra2(instr[20:16]), .rd2(rf_rd2),
                                 .dbu_ra(dbu_mem_rf_addr[4:0]), .dbu_rd(dbu_rf_data),
-                                .wa(rf_write_register), .we(reg_write), .wd(rf_wd));
+                                .wa(rf_write_register), .we(reg_write & dbu_run), .wd(rf_wd));
     // 寄存器文件 - ALU
     //// 带符号扩展后十六位
     assign instr_imm = {{16{instr[15]}}, instr[15:0]};
@@ -108,7 +109,7 @@ module cpu_one_circle
     // ALU - 数据存储器
     assign mem_addr = alu_y;
     // 数据存储器
-    dist_memory_256x32 memory(.a(mem_addr), .d(rf_rd2), .dpra(dbu_mem_rf_addr), .clk(clk), .we(mem_write), .spo(mem_rd), .dpo(dbu_mem_data));
+    dist_memory_256x32 memory(.a(mem_addr), .d(rf_rd2), .dpra(dbu_mem_rf_addr), .clk(clk), .we(mem_write & dbu_run), .spo(mem_rd), .dpo(dbu_mem_data));
     assign rf_wd = mem_to_reg == 1'b0 ? alu_y : mem_rd;
     // 控制单元
     control_unit control_unit(.opcode(opcode), .funct(funct), .reg_dst(reg_dst), .reg_write(reg_write),
@@ -121,11 +122,16 @@ module cpu_one_circle
     assign pc_plus4 = pc + 4;
     assign instr25_0_sll2 = instr[25:0] << 2;
     always @(*) begin
-        case(opcode)
-            BEQ_op: pc_in = alu_zero == 1'b1 ? pc + 4 + (instr_imm<<2) : pc + 4;
-            J_op: pc_in = {pc_plus4[31:28], instr25_0_sll2[27:0]};
-            default: pc_in = pc + 4;
-        endcase
+        if(dbu_run == 1'b0) begin
+            pc_in = pc;
+        end
+        else begin
+            case(opcode)
+                BEQ_op: pc_in = alu_zero == 1'b1 ? pc + 4 + (instr_imm<<2) : pc + 4;
+                J_op: pc_in = {pc_plus4[31:28], instr25_0_sll2[27:0]};
+                default: pc_in = pc + 4;
+            endcase
+        end
     end
     always @(posedge clk, posedge rst) begin
         if(rst) begin

@@ -42,12 +42,13 @@ module dbu_tb(
         rst = 1'b1;
         clk = 1'b0;
         succ = 1'b0;
-        sel = 3'b000;
+        sel = 3'b001;
         mem_rf = 1'b0;
         step = 1'b0;
         #5; rst = 1'b0; #5;
         
         // addi	$t0, $t0, 10
+        sel = 3'b001;
         clk = ~clk; #5; clk = ~clk; #5;
         step = 1'b1;
         clk = ~clk; #5; clk = ~clk; #5;
@@ -56,6 +57,7 @@ module dbu_tb(
         clk = ~clk; #5; clk = ~clk; #5;
         
         // addi	$t1, $t1, 20
+        sel = 3'b010;
         step = 1'b1;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
@@ -63,6 +65,7 @@ module dbu_tb(
         clk = ~clk; #5; clk = ~clk; #5;
         
         // add 	$t2, $t2, $t1
+        sel = 3'b011;
         step = 1'b1;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
@@ -71,14 +74,16 @@ module dbu_tb(
         
         succ = 1'b1;
         // beq	$t1, $t2, again
+        sel = 3'b100;
         clk = ~clk; #5; clk = ~clk; #5;
         // again: add 	$t2, $t2, $t1
+        sel = 3'b101;
         clk = ~clk; #5; clk = ~clk; #5;
         // beq	$t1, $t2, again
+        sel = 3'b110;
         clk = ~clk; #5; clk = ~clk; #5;
-        succ = 1'b1;
         // sw	$t2, -10($t0)
-        mem_rf = 1'b1;
+        sel = 3'b111;
         clk = ~clk; #5; clk = ~clk; #5;
         // lw	$t3, -10($t0)
         clk = ~clk; #5; clk = ~clk; #5;
@@ -88,8 +93,9 @@ module dbu_tb(
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
         succ = 1'b0;
-        mem_rf = 1'b0;
+        mem_rf = 1'b1; sel = 3'b000;
         inc = 1'b1; clk = ~clk; #5; clk = ~clk; #5; 
+        mem_rf = 1'b0;
         inc = 1'b0; clk = ~clk; #5; clk = ~clk; #5;
         inc = 1'b1; clk = ~clk; #5; clk = ~clk; #5; 
         inc = 1'b0; clk = ~clk; #5; clk = ~clk; #5;

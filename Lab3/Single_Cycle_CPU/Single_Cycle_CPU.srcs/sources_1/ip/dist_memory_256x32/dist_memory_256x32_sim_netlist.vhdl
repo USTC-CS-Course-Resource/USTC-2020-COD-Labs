@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Fri May  8 10:12:42 2020
+-- Date        : Sun May 10 20:10:25 2020
 -- Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               D:/VivadoProject/COD/Lab3/Single_Cycle_CPU/Single_Cycle_CPU.srcs/sources_1/ip/dist_memory_256x32/dist_memory_256x32_sim_netlist.vhdl
@@ -1910,7 +1910,7 @@ begin
     );
 ram_reg_0_127_0_0: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000080"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2062,7 +2062,7 @@ ram_reg_0_127_19_19: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_1_1: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000002"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2205,7 +2205,7 @@ ram_reg_0_127_29_29: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_2_2: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000082"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2231,7 +2231,7 @@ ram_reg_0_127_30_30: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_31_31: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000030"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2244,7 +2244,7 @@ ram_reg_0_127_31_31: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_3_3: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000008"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2309,7 +2309,7 @@ ram_reg_0_127_7_7: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_8_8: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000060"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -3177,7 +3177,7 @@ entity dist_memory_256x32_dist_mem_gen_v8_0_13 is
   attribute C_HAS_WE : integer;
   attribute C_HAS_WE of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 1;
   attribute C_MEM_INIT_FILE : string;
-  attribute C_MEM_INIT_FILE of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is "no_coe_file_loaded";
+  attribute C_MEM_INIT_FILE of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is "dist_memory_256x32.mif";
   attribute C_MEM_TYPE : integer;
   attribute C_MEM_TYPE of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 2;
   attribute C_PARSER_TYPE : integer;
@@ -3189,7 +3189,7 @@ entity dist_memory_256x32_dist_mem_gen_v8_0_13 is
   attribute C_QUALIFY_WE : integer;
   attribute C_QUALIFY_WE of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 0;
   attribute C_READ_MIF : integer;
-  attribute C_READ_MIF of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 0;
+  attribute C_READ_MIF of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 1;
   attribute C_REG_A_D_INPUTS : integer;
   attribute C_REG_A_D_INPUTS of dist_memory_256x32_dist_mem_gen_v8_0_13 : entity is 0;
   attribute C_REG_DPRA_INPUT : integer;
@@ -3356,7 +3356,7 @@ architecture STRUCTURE of dist_memory_256x32 is
   attribute c_has_spo : integer;
   attribute c_has_spo of U0 : label is 1;
   attribute c_mem_init_file : string;
-  attribute c_mem_init_file of U0 : label is "no_coe_file_loaded";
+  attribute c_mem_init_file of U0 : label is "dist_memory_256x32.mif";
   attribute c_parser_type : integer;
   attribute c_parser_type of U0 : label is 1;
   attribute c_pipeline_stages : integer;
@@ -3366,7 +3366,7 @@ architecture STRUCTURE of dist_memory_256x32 is
   attribute c_qualify_we : integer;
   attribute c_qualify_we of U0 : label is 0;
   attribute c_read_mif : integer;
-  attribute c_read_mif of U0 : label is 0;
+  attribute c_read_mif of U0 : label is 1;
   attribute c_reg_a_d_inputs : integer;
   attribute c_reg_a_d_inputs of U0 : label is 0;
   attribute c_reg_dpra_input : integer;

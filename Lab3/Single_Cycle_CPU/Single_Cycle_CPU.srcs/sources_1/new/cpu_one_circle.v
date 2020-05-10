@@ -109,7 +109,7 @@ module cpu_one_circle
     // ALU - 数据存储器
     assign mem_addr = alu_y;
     // 数据存储器
-    dist_memory_256x32 memory(.a(mem_addr), .d(rf_rd2), .dpra(dbu_mem_rf_addr), .clk(clk), .we(mem_write & dbu_run), .spo(mem_rd), .dpo(dbu_mem_data));
+    dist_memory_256x32 memory(.a(mem_addr >> 2), .d(rf_rd2), .dpra(dbu_mem_rf_addr >> 2), .clk(clk), .we(mem_write & dbu_run), .spo(mem_rd), .dpo(dbu_mem_data));
     assign rf_wd = mem_to_reg == 1'b0 ? alu_y : mem_rd;
     // 控制单元
     control_unit control_unit(.opcode(opcode), .funct(funct), .reg_dst(reg_dst), .reg_write(reg_write),

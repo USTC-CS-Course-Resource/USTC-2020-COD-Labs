@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="dist_memory_256x32_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1588903898">
+<GenRun Id="dist_memory_256x32_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1589112563">
   <File Type="PA-TCL" Name="dist_memory_256x32.tcl"/>
   <File Type="REPORTS-TCL" Name="dist_memory_256x32_reports.tcl"/>
   <File Type="RDS-RDS" Name="dist_memory_256x32.vds"/>

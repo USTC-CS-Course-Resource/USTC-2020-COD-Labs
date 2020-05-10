@@ -64,7 +64,7 @@ module dbu(
         end
         else begin
             if(inc_edge) addr <= addr + 1;
-            if(dec_edge) addr <= addr - 1;
+            else if(dec_edge) addr <= addr - 1;
         end
     end
     

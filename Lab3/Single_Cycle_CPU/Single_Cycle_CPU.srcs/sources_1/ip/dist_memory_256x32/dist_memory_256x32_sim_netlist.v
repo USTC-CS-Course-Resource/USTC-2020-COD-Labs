@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Fri May  8 10:12:42 2020
+// Date        : Sun May 10 20:10:25 2020
 // Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               D:/VivadoProject/COD/Lab3/Single_Cycle_CPU/Single_Cycle_CPU.srcs/sources_1/ip/dist_memory_256x32/dist_memory_256x32_sim_netlist.v
@@ -62,12 +62,12 @@ module dist_memory_256x32
   (* c_has_qspo_rst = "0" *) 
   (* c_has_qspo_srst = "0" *) 
   (* c_has_spo = "1" *) 
-  (* c_mem_init_file = "no_coe_file_loaded" *) 
+  (* c_mem_init_file = "dist_memory_256x32.mif" *) 
   (* c_parser_type = "1" *) 
   (* c_pipeline_stages = "0" *) 
   (* c_qce_joined = "0" *) 
   (* c_qualify_we = "0" *) 
-  (* c_read_mif = "0" *) 
+  (* c_read_mif = "1" *) 
   (* c_reg_a_d_inputs = "0" *) 
   (* c_reg_dpra_input = "0" *) 
   (* c_sync_enable = "1" *) 
@@ -99,9 +99,9 @@ endmodule
 (* C_HAS_QDPO_CLK = "0" *) (* C_HAS_QDPO_RST = "0" *) (* C_HAS_QDPO_SRST = "0" *) 
 (* C_HAS_QSPO = "0" *) (* C_HAS_QSPO_CE = "0" *) (* C_HAS_QSPO_RST = "0" *) 
 (* C_HAS_QSPO_SRST = "0" *) (* C_HAS_SPO = "1" *) (* C_HAS_WE = "1" *) 
-(* C_MEM_INIT_FILE = "no_coe_file_loaded" *) (* C_MEM_TYPE = "2" *) (* C_PARSER_TYPE = "1" *) 
+(* C_MEM_INIT_FILE = "dist_memory_256x32.mif" *) (* C_MEM_TYPE = "2" *) (* C_PARSER_TYPE = "1" *) 
 (* C_PIPELINE_STAGES = "0" *) (* C_QCE_JOINED = "0" *) (* C_QUALIFY_WE = "0" *) 
-(* C_READ_MIF = "0" *) (* C_REG_A_D_INPUTS = "0" *) (* C_REG_DPRA_INPUT = "0" *) 
+(* C_READ_MIF = "1" *) (* C_REG_A_D_INPUTS = "0" *) (* C_REG_DPRA_INPUT = "0" *) 
 (* C_SYNC_ENABLE = "1" *) (* C_WIDTH = "32" *) (* ORIG_REF_NAME = "dist_mem_gen_v8_0_13" *) 
 module dist_memory_256x32_dist_mem_gen_v8_0_13
    (a,
@@ -1321,7 +1321,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "0" *) 
   (* ram_slice_end = "0" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000080)) 
     ram_reg_0_127_0_0
        (.A(a[6:0]),
         .D(d[0]),
@@ -1525,7 +1525,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "1" *) 
   (* ram_slice_end = "1" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000002)) 
     ram_reg_0_127_1_1
        (.A(a[6:0]),
         .D(d[1]),
@@ -1723,7 +1723,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "2" *) 
   (* ram_slice_end = "2" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000082)) 
     ram_reg_0_127_2_2
        (.A(a[6:0]),
         .D(d[2]),
@@ -1759,7 +1759,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "31" *) 
   (* ram_slice_end = "31" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000030)) 
     ram_reg_0_127_31_31
        (.A(a[6:0]),
         .D(d[31]),
@@ -1777,7 +1777,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "3" *) 
   (* ram_slice_end = "3" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000008)) 
     ram_reg_0_127_3_3
        (.A(a[6:0]),
         .D(d[3]),
@@ -1867,7 +1867,7 @@ module dist_memory_256x32_dpram
   (* ram_slice_begin = "8" *) 
   (* ram_slice_end = "8" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000060)) 
     ram_reg_0_127_8_8
        (.A(a[6:0]),
         .D(d[8]),

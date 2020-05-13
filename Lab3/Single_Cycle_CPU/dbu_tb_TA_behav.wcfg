@@ -3,125 +3,201 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="dbu_tb_TA_behav.wdb" id="1">
+      <db_ref path="cpu_one_circle_tb_TA_behav.wdb" id="1">
          <top_modules>
-            <top_module name="dbu_tb_TA" />
+            <top_module name="cpu_one_circle_tb_TA" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="152643fs"></ZoomStartTime>
-      <ZoomEndTime time="233544fs"></ZoomEndTime>
-      <Cursor1Time time="199716fs"></Cursor1Time>
+      <ZoomStartTime time="110732fs"></ZoomStartTime>
+      <ZoomEndTime time="217854fs"></ZoomEndTime>
+      <Cursor1Time time="200000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="161"></NameColumnWidth>
-      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+      <NameColumnWidth column_width="160"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
-   <wvobject fp_name="/dbu_tb_TA/clk" type="logic">
+   <WVObjectSize size="45" />
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/rst" type="logic">
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/sel" type="array">
-      <obj_property name="ElementShortName">sel[2:0]</obj_property>
-      <obj_property name="ObjectShortName">sel[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/mem_rf" type="logic">
-      <obj_property name="ElementShortName">mem_rf</obj_property>
-      <obj_property name="ObjectShortName">mem_rf</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/step" type="logic">
-      <obj_property name="ElementShortName">step</obj_property>
-      <obj_property name="ObjectShortName">step</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/succ" type="logic">
-      <obj_property name="ElementShortName">succ</obj_property>
-      <obj_property name="ObjectShortName">succ</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/inc" type="logic">
-      <obj_property name="ElementShortName">inc</obj_property>
-      <obj_property name="ObjectShortName">inc</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dec" type="logic">
-      <obj_property name="ElementShortName">dec</obj_property>
-      <obj_property name="ObjectShortName">dec</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/an" type="array">
-      <obj_property name="ElementShortName">an[7:0]</obj_property>
-      <obj_property name="ObjectShortName">an[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/seg" type="array">
-      <obj_property name="ElementShortName">seg[7:0]</obj_property>
-      <obj_property name="ObjectShortName">seg[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/led" type="array">
-      <obj_property name="ElementShortName">led[11:0]</obj_property>
-      <obj_property name="ObjectShortName">led[11:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_mem_rf_addr" type="array">
-      <obj_property name="ElementShortName">dbu_mem_rf_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_mem_rf_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_rf_data" type="array">
-      <obj_property name="ElementShortName">dbu_rf_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_rf_data[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_mem_data" type="array">
-      <obj_property name="ElementShortName">dbu_mem_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_mem_data[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_pc_in" type="array">
-      <obj_property name="ElementShortName">dbu_pc_in[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_pc_in[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_pc" type="array">
-      <obj_property name="ElementShortName">dbu_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_pc[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_instr" type="array">
-      <obj_property name="ElementShortName">dbu_instr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_instr[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_rf_rd1" type="array">
-      <obj_property name="ElementShortName">dbu_rf_rd1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_rf_rd1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_rf_rd2" type="array">
-      <obj_property name="ElementShortName">dbu_rf_rd2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_rf_rd2[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_alu_y" type="array">
-      <obj_property name="ElementShortName">dbu_alu_y[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_alu_y[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_mem_rd" type="array">
-      <obj_property name="ElementShortName">dbu_mem_rd[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_mem_rd[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_status" type="array">
-      <obj_property name="ElementShortName">dbu_status[11:0]</obj_property>
-      <obj_property name="ObjectShortName">dbu_status[11:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/dbu_run" type="logic">
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_run" type="logic">
       <obj_property name="ElementShortName">dbu_run</obj_property>
       <obj_property name="ObjectShortName">dbu_run</obj_property>
    </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/value" type="array">
-      <obj_property name="ElementShortName">value[31:0]</obj_property>
-      <obj_property name="ObjectShortName">value[31:0]</obj_property>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_mem_rf_addr" type="array">
+      <obj_property name="ElementShortName">dbu_mem_rf_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_mem_rf_addr[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/addr" type="array">
-      <obj_property name="ElementShortName">addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_rf_data" type="array">
+      <obj_property name="ElementShortName">dbu_rf_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_rf_data[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/dbu_tb_TA/dbu/cpu_one_circle/alu_y" type="array">
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_mem_data" type="array">
+      <obj_property name="ElementShortName">dbu_mem_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_mem_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_pc_in" type="array">
+      <obj_property name="ElementShortName">dbu_pc_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_pc_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_pc" type="array">
+      <obj_property name="ElementShortName">dbu_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_instr" type="array">
+      <obj_property name="ElementShortName">dbu_instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_rf_rd1" type="array">
+      <obj_property name="ElementShortName">dbu_rf_rd1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_rf_rd1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_rf_rd2" type="array">
+      <obj_property name="ElementShortName">dbu_rf_rd2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_rf_rd2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_alu_y" type="array">
+      <obj_property name="ElementShortName">dbu_alu_y[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_alu_y[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_mem_rd" type="array">
+      <obj_property name="ElementShortName">dbu_mem_rd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_mem_rd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/dbu_status" type="array">
+      <obj_property name="ElementShortName">dbu_status[11:0]</obj_property>
+      <obj_property name="ObjectShortName">dbu_status[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/instr" type="array">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/rf_rd1" type="array">
+      <obj_property name="ElementShortName">rf_rd1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf_rd1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/rf_rd2" type="array">
+      <obj_property name="ElementShortName">rf_rd2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf_rd2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/rf_wd" type="array">
+      <obj_property name="ElementShortName">rf_wd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf_wd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/mem_rd" type="array">
+      <obj_property name="ElementShortName">mem_rd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_rd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/alu_b" type="array">
+      <obj_property name="ElementShortName">alu_b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/alu_y" type="array">
       <obj_property name="ElementShortName">alu_y[31:0]</obj_property>
       <obj_property name="ObjectShortName">alu_y[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/instr_imm" type="array">
+      <obj_property name="ElementShortName">instr_imm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_imm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/pc_in" type="array">
+      <obj_property name="ElementShortName">pc_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/rf_write_register" type="array">
+      <obj_property name="ElementShortName">rf_write_register[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rf_write_register[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/mem_addr" type="array">
+      <obj_property name="ElementShortName">mem_addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[5:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/funct" type="array">
+      <obj_property name="ElementShortName">funct[5:0]</obj_property>
+      <obj_property name="ObjectShortName">funct[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/reg_dst" type="logic">
+      <obj_property name="ElementShortName">reg_dst</obj_property>
+      <obj_property name="ObjectShortName">reg_dst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/reg_write" type="logic">
+      <obj_property name="ElementShortName">reg_write</obj_property>
+      <obj_property name="ObjectShortName">reg_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/mem_read" type="logic">
+      <obj_property name="ElementShortName">mem_read</obj_property>
+      <obj_property name="ObjectShortName">mem_read</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/mem_to_reg" type="logic">
+      <obj_property name="ElementShortName">mem_to_reg</obj_property>
+      <obj_property name="ObjectShortName">mem_to_reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/mem_write" type="logic">
+      <obj_property name="ElementShortName">mem_write</obj_property>
+      <obj_property name="ObjectShortName">mem_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/alu_op" type="array">
+      <obj_property name="ElementShortName">alu_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/alu_src" type="logic">
+      <obj_property name="ElementShortName">alu_src</obj_property>
+      <obj_property name="ObjectShortName">alu_src</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/alu_zero" type="logic">
+      <obj_property name="ElementShortName">alu_zero</obj_property>
+      <obj_property name="ObjectShortName">alu_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/pc_plus4" type="array">
+      <obj_property name="ElementShortName">pc_plus4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_plus4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/instr25_0_sll2" type="array">
+      <obj_property name="ElementShortName">instr25_0_sll2[27:0]</obj_property>
+      <obj_property name="ObjectShortName">instr25_0_sll2[27:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/ADD_op" type="array">
+      <obj_property name="ElementShortName">ADD_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ADD_op[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/ADD_funct" type="array">
+      <obj_property name="ElementShortName">ADD_funct[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ADD_funct[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/ADDI_op" type="array">
+      <obj_property name="ElementShortName">ADDI_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDI_op[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/LW_op" type="array">
+      <obj_property name="ElementShortName">LW_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">LW_op[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/SW_op" type="array">
+      <obj_property name="ElementShortName">SW_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">SW_op[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/BEQ_op" type="array">
+      <obj_property name="ElementShortName">BEQ_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">BEQ_op[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_one_circle_tb_TA/cpu_one_circle/J_op" type="array">
+      <obj_property name="ElementShortName">J_op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">J_op[5:0]</obj_property>
    </wvobject>
 </wave_config>

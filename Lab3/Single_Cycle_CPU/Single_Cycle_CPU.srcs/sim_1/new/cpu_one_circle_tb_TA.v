@@ -82,6 +82,7 @@ module cpu_one_circle_tb_TA();
         dbu_mem_rf_addr = 32'h0000_0008;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
+        dbu_mem_rf_addr = 32'h0000_0002;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
         

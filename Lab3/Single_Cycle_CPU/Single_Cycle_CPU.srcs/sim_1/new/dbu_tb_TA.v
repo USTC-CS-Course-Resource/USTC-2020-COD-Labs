@@ -90,9 +90,18 @@ module dbu_tb_TA(
         
         // 随意多跑几下
         // _success: 
+        succ = 1'b1;
         repeat(4) begin
             clk = ~clk; #5; clk = ~clk; #5;
         end
+        
+        // 检查0x8地址是否为1
+        mem_rf = 1'b1;
+        repeat(14) begin
+            dec = 1'b1; clk = ~clk; #5; clk = ~clk; #5;
+            dec = 1'b0; clk = ~clk; #5; clk = ~clk; #5;
+        end
+        dec = 1'b0;
         
         clk = ~clk; #5; clk = ~clk; #5;
         

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.1)  13 MAY 2020 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.1)  13 MAY 2020 22:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1359,18 +1359,17 @@ File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 
 LaTeX Warning: No \author given.
 
-<D:/Latex_Sample/report_model/xiaohui.png, id=14, 180.018pt x 180.018pt>
-File: D:/Latex_Sample/report_model/xiaohui.png Graphic file (type png)
-<use D:/Latex_Sample/report_model/xiaohui.png>
-Package pdftex.def Info: D:/Latex_Sample/report_model/xiaohui.png  used on inpu
-t line 128.
+<xiaohui.png, id=14, 180.018pt x 180.018pt>
+File: xiaohui.png Graphic file (type png)
+<use xiaohui.png>
+Package pdftex.def Info: xiaohui.png  used on input line 128.
 (pdftex.def)             Requested size: 180.67499pt x 180.67679pt.
 Package CJKpunct Info: use punctuation spaces for family 'rm' with punctstyle (
 quanjiao) on input line 130.
 [1
 
 
- <d:/Latex_Sample/report_model/xiaohui.png>]
+ <./xiaohui.png>]
 <cpu_data_path_standard.png, id=82, 846.91406pt x 505.13719pt>
 File: cpu_data_path_standard.png Graphic file (type png)
 <use cpu_data_path_standard.png>
@@ -1480,8 +1479,8 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 31487 strings out of 492623
- 579467 string characters out of 6133291
+ 31486 strings out of 492623
+ 579322 string characters out of 6133291
  929523 words of memory out of 5000000
  34504 multiletter control sequences out of 15000+600000
  596909 words of font info for 264 fonts, out of 8000000 for 9000

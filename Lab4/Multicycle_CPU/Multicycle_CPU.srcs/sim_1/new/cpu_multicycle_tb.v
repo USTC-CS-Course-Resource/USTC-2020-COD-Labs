@@ -35,7 +35,7 @@ module cpu_multicycle_tb(
         rst = 1'b0;
         #5;
         
-        repeat(20) begin
+        repeat(120) begin
             clk = ~clk; #5; clk = ~clk; #5;
         end
         

@@ -80,77 +80,12 @@ always @(posedge clk, posedge rst) begin
         cur_state <= 16'h0000;
     end
     else begin
-        case(cur_state)
-            IF: begin
-                mem_read <= 1'b1;
-                alu_src_a = 1'b0;
-                i_or_d <= 1'b0;
-                ir_write <= 1'b1;
-                alu_src_b <= 2'b01;
-                alu_op <= 2'b00;
-                pc_write <= 1'b1;
-                pc_source <= 2'b00;
-            end
-            ID: begin
-                alu_src_a <= 1'b0;
-                alu_src_b <= 2'b11;
-                alu_op <= 2'b00;
-            end
-            R_EX: begin
-                alu_src_a <= 1'b1;
-                alu_src_b <= 2'b00;
-                alu_op <= 2'b10;
-            end
-            R_WB: begin
-                reg_dst = 1'b1;
-                reg_write = 1'b1;
-                mem_to_reg = 1'b0;
-            end
-            I_EX, LW_EX, SW_EX: begin
-                alu_src_a <= 1'b1;
-                alu_src_b <= 2'b10;
-                alu_op <= 2'b00;
-            end
-            I_WB: begin
-                reg_dst <= 1'b0;
-                reg_write <= 1'b1;
-                mem_to_reg <= 1'b0;
-            end
-            LW_MEM: begin
-                mem_read <= 1'b1;
-                i_or_d <= 1'b1;
-            end
-            LW_WB: begin
-                reg_dst <= 1'b0;
-                reg_write <= 1'b1;
-                mem_to_reg <= 1'b1;
-            end
-            SW_MEM: begin
-                mem_write <= 1'b1;
-                i_or_d <= 1'b1;
-            end
-            BEQ_EX: begin
-                alu_src_a <= 1'b1;
-                alu_src_b <= 2'b00;
-                alu_op <= 2'b01;
-                pc_write_cond <= 1'b1;
-                pc_source <= 2'b01;
-            end
-            J_EX: begin
-                pc_write <= 1'b1;
-                pc_source <= 2'b10;
-            end
-            default: begin
-                {pc_write_cond, pc_write, pc_source,
-                 i_or_d, mem_read, mem_write, mem_to_reg,
-                 ir_write, reg_write, reg_dst,
-                 alu_op, alu_src_a, alu_src_b} <= 16'h0000;
-            end
-        endcase
+        cur_state <= next_state;
     end
 end
 
 always @(*) begin
+    // ×´Ì¬»ú×ªÒÆ
     case(cur_state)
         IF: next_state = ID;
         ID: begin
@@ -168,7 +103,7 @@ always @(*) begin
         R_WB: next_state = IF;
         I_EX: next_state = I_WB;
         I_WB: next_state = IF;
-        LW_EX: next_state = LW_WB;
+        LW_EX: next_state = LW_MEM;
         LW_MEM: next_state = LW_WB;
         LW_WB: next_state = IF;
         SW_EX: next_state = SW_MEM;
@@ -176,6 +111,75 @@ always @(*) begin
         BEQ_EX: next_state = IF;
         J_EX: next_state = IF;
         default: next_state = cur_state;
+    endcase
+    
+    // Êä³ö
+    case(cur_state)
+        IF: begin
+            mem_read = 1'b1;
+            alu_src_a = 1'b0;
+            i_or_d = 1'b0;
+            ir_write = 1'b1;
+            alu_src_b = 2'b01;
+            alu_op = 2'b00;
+            pc_write = 1'b1;
+            pc_source = 2'b00;
+        end
+        ID: begin
+            alu_src_a = 1'b0;
+            alu_src_b = 2'b11;
+            alu_op = 2'b00;
+        end
+        R_EX: begin
+            alu_src_a = 1'b1;
+            alu_src_b = 2'b00;
+            alu_op = 2'b10;
+        end
+        R_WB: begin
+            reg_dst = 1'b1;
+            reg_write = 1'b1;
+            mem_to_reg = 1'b0;
+        end
+        I_EX, LW_EX, SW_EX: begin
+            alu_src_a = 1'b1;
+            alu_src_b = 2'b10;
+            alu_op = 2'b00;
+        end
+        I_WB: begin
+            reg_dst = 1'b0;
+            reg_write = 1'b1;
+            mem_to_reg = 1'b0;
+        end
+        LW_MEM: begin
+            mem_read = 1'b1;
+            i_or_d = 1'b1;
+        end
+        LW_WB: begin
+            reg_dst = 1'b0;
+            reg_write = 1'b1;
+            mem_to_reg = 1'b1;
+        end
+        SW_MEM: begin
+            mem_write = 1'b1;
+            i_or_d = 1'b1;
+        end
+        BEQ_EX: begin
+            alu_src_a = 1'b1;
+            alu_src_b = 2'b00;
+            alu_op = 2'b01;
+            pc_write_cond = 1'b1;
+            pc_source = 2'b01;
+        end
+        J_EX: begin
+            pc_write = 1'b1;
+            pc_source = 2'b10;
+        end
+        default: begin
+            {pc_write_cond, pc_write, pc_source,
+             i_or_d, mem_read, mem_write, mem_to_reg,
+             ir_write, reg_write, reg_dst,
+             alu_op, alu_src_a, alu_src_b} = 16'h0000;
+        end
     endcase
 end
     

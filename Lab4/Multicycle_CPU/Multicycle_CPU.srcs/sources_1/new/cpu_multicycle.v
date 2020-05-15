@@ -52,10 +52,12 @@ wire [31: 0] mem_read_data;     // mem_read_data是从存储器读出来的wire
 wire [31: 0] rf_rd1;
 wire [31: 0] rf_rd2;
 wire [31: 0] rf_write_addr;
+wire [31: 0] rf_write_data;
 wire alu_zero;
 wire [2: 0] alu_m;
 wire [31: 0] alu_a;
 wire [31: 0] alu_b;
+wire [31: 0] alu_y;
 wire [31: 0] ir_imm;            // 指令中立即数
 wire [31: 0] ir_imm_sll_2;      // 指令中立即数左移两位的结果
 wire [27: 0] ir_25_0_sll_2;     // 指令[25: 0]左移两位的结果

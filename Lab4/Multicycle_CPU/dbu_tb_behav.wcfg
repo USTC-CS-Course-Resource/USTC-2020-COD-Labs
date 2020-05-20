@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1473555fs"></ZoomStartTime>
-      <ZoomEndTime time="1581456fs"></ZoomEndTime>
-      <Cursor1Time time="950080fs"></Cursor1Time>
+      <ZoomStartTime time="863810fs"></ZoomStartTime>
+      <ZoomEndTime time="1048909fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="160"></NameColumnWidth>
-      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
+   <WVObjectSize size="27" />
    <wvobject fp_name="/dbu_tb/dbu/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -79,7 +79,7 @@
    <wvobject fp_name="/dbu_tb/dbu/dbu_pc" type="array">
       <obj_property name="ElementShortName">dbu_pc[31:0]</obj_property>
       <obj_property name="ObjectShortName">dbu_pc[31:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/dbu_tb/dbu/dbu_ir" type="array">
       <obj_property name="ElementShortName">dbu_ir[31:0]</obj_property>
@@ -100,6 +100,7 @@
    <wvobject fp_name="/dbu_tb/dbu/dbu_alu_out" type="array">
       <obj_property name="ElementShortName">dbu_alu_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">dbu_alu_out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/dbu_tb/dbu/dbu_status" type="array">
       <obj_property name="ElementShortName">dbu_status[15:0]</obj_property>
@@ -125,5 +126,10 @@
    <wvobject fp_name="/dbu_tb/dbu/step_edge" type="logic">
       <obj_property name="ElementShortName">step_edge</obj_property>
       <obj_property name="ObjectShortName">step_edge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/dbu_tb/dbu/cpu_multicycle/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>

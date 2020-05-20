@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Fri May 15 21:19:26 2020
+// Date        : Wed May 20 16:07:51 2020
 // Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
-//               d:/VivadoProject/COD/Lab4/Multicycle_CPU/Multicycle_CPU.srcs/sources_1/ip/dist_mem_256x32/dist_mem_256x32_stub.v
+//               D:/VivadoProject/COD/Lab4/Multicycle_CPU_more/Multicycle_CPU_more.srcs/sources_1/ip/dist_mem_256x32/dist_mem_256x32_stub.v
 // Design      : dist_mem_256x32
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1

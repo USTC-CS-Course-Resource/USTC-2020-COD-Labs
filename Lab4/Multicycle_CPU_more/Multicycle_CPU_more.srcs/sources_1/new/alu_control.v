@@ -24,6 +24,7 @@ module alu_control
 #
 (
 parameter ADD_funct = 6'b100000,
+parameter OR_funct = 6'b100101,
 
 parameter R_alu_op = 2'b10,
 parameter ADDI_alu_op = 2'b00,
@@ -48,6 +49,7 @@ always @(*) begin
         R_alu_op: begin
             case(funct)
                 ADD_funct: alu_m = ALU_ADD;
+                OR_funct: alu_m = ALU_OR;
                 default: alu_m = 3'b111;
             endcase
         end

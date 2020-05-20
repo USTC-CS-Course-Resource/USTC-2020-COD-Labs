@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/VivadoProject/COD/Lab4/Multicycle_CPU/Multicycle_CPU.runs/dist_mem_256x32_synth_1'
+HD_PWD='D:/VivadoProject/COD/Lab4/Multicycle_CPU_more/Multicycle_CPU_more.runs/dist_mem_256x32_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

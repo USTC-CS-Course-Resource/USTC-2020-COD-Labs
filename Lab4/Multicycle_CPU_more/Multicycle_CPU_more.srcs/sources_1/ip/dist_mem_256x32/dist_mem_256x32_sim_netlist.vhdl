@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Fri May 15 21:19:26 2020
+-- Date        : Wed May 20 16:07:51 2020
 -- Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               d:/VivadoProject/COD/Lab4/Multicycle_CPU/Multicycle_CPU.srcs/sources_1/ip/dist_mem_256x32/dist_mem_256x32_sim_netlist.vhdl
+--               D:/VivadoProject/COD/Lab4/Multicycle_CPU_more/Multicycle_CPU_more.srcs/sources_1/ip/dist_mem_256x32/dist_mem_256x32_sim_netlist.vhdl
 -- Design      : dist_mem_256x32
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -2583,7 +2583,7 @@ begin
     );
 ram_reg_0_127_0_0: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000051863881"
+      INIT => X"00000000000000000000000053863881"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2879,7 +2879,7 @@ ram_reg_0_127_29_29: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_2_2: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000040111082"
+      INIT => X"00000000000000000000000042111082"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),

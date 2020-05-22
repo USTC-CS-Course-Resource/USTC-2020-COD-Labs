@@ -364,7 +364,7 @@ end
 	\begin{lstlisting}[language=verilog]
 always @(posedge clk, posedge rst) begin
     if(rst) begin
-        addr <= 4'b0000;
+        addr <= 32'h0000_0000;
     end
     else begin
         if(inc_edge) addr <= addr + 1;
@@ -394,7 +394,6 @@ module nixietube(
         cnt_target_1000HZ = 10000;
         cnt_1000HZ = 0;
         an = 8'h00;
-        seg = 8'h00;
     end
     
     always @(posedge clk, posedge rst) begin
@@ -444,6 +443,7 @@ module nixietube(
             4'b1101: seg = 8'b1010_0001;
             4'b1110: seg = 8'b1000_0110;
             4'b1111: seg = 8'b1000_1110;
+            default: seg = 8'h00;
         endcase
     end
 endmodule

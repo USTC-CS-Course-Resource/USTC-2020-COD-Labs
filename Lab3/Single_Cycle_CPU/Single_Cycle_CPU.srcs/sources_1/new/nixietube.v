@@ -44,7 +44,6 @@ module nixietube(
         if(rst) begin
             cnt_1000HZ <= cnt_1000HZ + 1;
             an <= 8'b1111_1111;
-            seg <= 8'h00;
             digit <= 4'b0000;
         end
         else begin
@@ -87,6 +86,7 @@ module nixietube(
             4'b1101: seg = 8'b1010_0001;
             4'b1110: seg = 8'b1000_0110;
             4'b1111: seg = 8'b1000_1110;
+            default: seg = 8'h00;
         endcase
     end
 endmodule

@@ -72,10 +72,6 @@ reg [3: 0] next_state;
 
 // 控制单元
 always @(posedge clk, posedge rst) begin
-    {pc_write_cond, pc_write, pc_source,
-     i_or_d, mem_read, mem_write, mem_to_reg,
-     ir_write, reg_write, reg_dst,
-     alu_op, alu_src_a, alu_src_b} <= 16'h0000;
     if(rst) begin
         cur_state <= 16'h0000;
     end
@@ -114,6 +110,10 @@ always @(*) begin
     endcase
     
     // 输出
+    {pc_write_cond, pc_write, pc_source,
+     i_or_d, mem_read, mem_write, mem_to_reg,
+     ir_write, reg_write, reg_dst,
+     alu_op, alu_src_a, alu_src_b} = 16'h0000;
     case(cur_state)
         IF: begin
             mem_read = 1'b1;

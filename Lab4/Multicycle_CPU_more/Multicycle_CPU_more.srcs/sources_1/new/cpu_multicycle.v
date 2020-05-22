@@ -130,20 +130,29 @@ control_unit cn(.clk(clk), .rst(rst), .opcode(ir[31: 26]),
                 .alu_src_a(alu_src_a), .alu_src_b(alu_src_b),
                 .reg_write(reg_write), .reg_dst(reg_dst));
 
-always @(posedge clk) begin
-    // Memory Data Register 的写入
-    mem_data <= mem_read_data;
-    
-    // Instruction Register 的写入
-    if(ir_write) ir <= mem_read_data;
-    else ir <= ir;
-    
-    // A 和 B 写入
-    A <= rf_rd1;
-    B <= rf_rd2;
-    
-    // alu_out 写入
-    alu_out <= alu_y;
+always @(posedge clk, posedge rst) begin
+    if(rst) begin
+        mem_data <= 32'h0000_0000;
+        ir <= 32'h0000_0000;
+        A <= 32'h0000_0000;
+        B <= 32'h0000_0000;
+        alu_out <= 32'h0000_0000;
+    end
+    else begin
+        // Memory Data Register 的写入
+        mem_data <= mem_read_data;
+        
+        // Instruction Register 的写入
+        if(ir_write) ir <= mem_read_data;
+        else ir <= ir;
+        
+        // A 和 B 写入
+        A <= rf_rd1;
+        B <= rf_rd2;
+        
+        // alu_out 写入
+        alu_out <= alu_y;
+    end
 end
 
 // PC的更新
@@ -151,11 +160,6 @@ assign ir_25_0_sll_2 = ir[25: 0] << 2;
 always @(posedge clk, posedge rst) begin
     if(rst) begin
         pc <= 32'h0000_0000;
-        mem_data <= 32'h0000_0000;
-        ir <= 32'h0000_0000;
-        A <= 32'h0000_0000;
-        B <= 32'h0000_0000;
-        alu_out <= 32'h0000_0000;
     end
     else if(pc_we) begin
         case(pc_source)

@@ -223,20 +223,29 @@ control_unit cn(.clk(clk), .rst(rst), .opcode(ir[31: 26]),
                 .reg_write(reg_write), .reg_dst(reg_dst));
 
 // 一些寄存器的写入
-always @(posedge clk) begin
-    // Memory Data Register 的写入
-    mem_data <= mem_read_data;
-    
-    // Instruction Register 的写入
-    if(ir_write) ir <= mem_read_data;
-    else ir <= ir;
-    
-    // A 和 B 写入
-    A <= rf_rd1;
-    B <= rf_rd2;
-    
-    // alu\_out 写入
-    alu_out <= alu_y;
+always @(posedge clk, posedge rst) begin
+    if(rst) begin
+        mem_data <= 32'h0000_0000;
+        ir <= 32'h0000_0000;
+        A <= 32'h0000_0000;
+        B <= 32'h0000_0000;
+        alu_out <= 32'h0000_0000;
+    end
+    else begin
+        // Memory Data Register 的写入
+        mem_data <= mem_read_data;
+        
+        // Instruction Register 的写入
+        if(ir_write) ir <= mem_read_data;
+        else ir <= ir;
+        
+        // A 和 B 写入
+        A <= rf_rd1;
+        B <= rf_rd2;
+        
+        // alu\_out 写入
+        alu_out <= alu_y;
+    end
 end
 	\end{lstlisting}
 	
@@ -248,11 +257,6 @@ assign ir_25_0_sll_2 = ir[25: 0] << 2;
 always @(posedge clk, posedge rst) begin
     if(rst) begin
         pc <= 32'h0000_0000;
-        mem_data <= 32'h0000_0000;
-        ir <= 32'h0000_0000;
-        A <= 32'h0000_0000;
-        B <= 32'h0000_0000;
-        alu_out <= 32'h0000_0000;
     end
     else if(pc_we) begin
         case(pc_source)
@@ -306,6 +310,10 @@ end
 	关于控制信号输出的代码:\\
 	\begin{lstlisting}[language=verilog]
 // 输出
+{pc_write_cond, pc_write, pc_source,
+ i_or_d, mem_read, mem_write, mem_to_reg,
+ ir_write, reg_write, reg_dst,
+ alu_op, alu_src_a, alu_src_b} = 16'h0000;
 case(cur_state)
     IF: begin
         mem_read = 1'b1;
@@ -501,7 +509,6 @@ module nixietube(
         cnt_target_1000HZ = 10000;
         cnt_1000HZ = 0;
         an = 8'h00;
-        seg = 8'h00;
     end
     
     always @(posedge clk, posedge rst) begin
@@ -551,6 +558,7 @@ module nixietube(
             4'b1101: seg = 8'b1010_0001;
             4'b1110: seg = 8'b1000_0110;
             4'b1111: seg = 8'b1000_1110;
+            default: seg = 8'h00;
         endcase
     end
 endmodule

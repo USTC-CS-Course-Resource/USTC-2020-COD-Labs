@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.1)  20 MAY 2020 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.1)  22 MAY 2020 14:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1376,11 +1376,11 @@ File: cpu_data_path_standard.png Graphic file (type png)
 Package pdftex.def Info: cpu_data_path_standard.png  used on input line 165.
 (pdftex.def)             Requested size: 472.03123pt x 259.39015pt.
  [2]
-<cpu_data_path.png, id=133, 1506.62875pt x 793.96625pt>
+<cpu_data_path.png, id=133, 1741.50626pt x 792.9625pt>
 File: cpu_data_path.png Graphic file (type png)
 <use cpu_data_path.png>
 Package pdftex.def Info: cpu_data_path.png  used on input line 170.
-(pdftex.def)             Requested size: 472.03123pt x 248.74382pt.
+(pdftex.def)             Requested size: 472.03123pt x 214.9255pt.
 <cpu_phase_diagram.png, id=135, 1017.8025pt x 628.3475pt>
 File: cpu_phase_diagram.png Graphic file (type png)
 <use cpu_phase_diagram.png>
@@ -1405,90 +1405,90 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <6.52437> not available
  [4 <./cpu_phase_diagram.png>] [5]
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 273.
+(Font)              size <10.95> substituted on input line 277.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 309--311
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 385--386
 
  []
 
 [7]
-<dbu_data_path.png, id=192, 1630.09pt x 634.37pt>
+<dbu_data_path.png, id=191, 1630.09pt x 634.37pt>
 File: dbu_data_path.png Graphic file (type png)
 <use dbu_data_path.png>
-Package pdftex.def Info: dbu_data_path.png  used on input line 420.
+Package pdftex.def Info: dbu_data_path.png  used on input line 428.
 (pdftex.def)             Requested size: 472.03123pt x 183.69154pt.
  [8]
 <dbu_phase_diagram.png, id=200, 258.9675pt x 131.49126pt>
 File: dbu_phase_diagram.png Graphic file (type png)
 <use dbu_phase_diagram.png>
-Package pdftex.def Info: dbu_phase_diagram.png  used on input line 426.
+Package pdftex.def Info: dbu_phase_diagram.png  used on input line 434.
 (pdftex.def)             Requested size: 94.40623pt x 47.93471pt.
  [9 <./dbu_data_path.png> <./dbu_phase_diagram.png>]
 
 LaTeX Font Warning: Font shape `U/wasy/m/n' in size <6.52437> not available
-(Font)              size <7> substituted on input line 479.
+(Font)              size <7> substituted on input line 487.
 
 [10] [11]
-<cpu.png, id=218, 1843.88875pt x 784.9325pt>
+<cpu.png, id=217, 1843.88875pt x 784.9325pt>
 File: cpu.png Graphic file (type png)
 <use cpu.png>
-Package pdftex.def Info: cpu.png  used on input line 569.
+Package pdftex.def Info: cpu.png  used on input line 577.
 (pdftex.def)             Requested size: 472.03123pt x 200.93964pt.
-<CPU_1_jump.png, id=219, 659.46375pt x 363.3575pt>
+<CPU_1_jump.png, id=218, 659.46375pt x 363.3575pt>
 File: CPU_1_jump.png Graphic file (type png)
 <use CPU_1_jump.png>
-Package pdftex.def Info: CPU_1_jump.png  used on input line 579.
+Package pdftex.def Info: CPU_1_jump.png  used on input line 587.
 (pdftex.def)             Requested size: 472.03123pt x 260.09248pt.
  [12 <./cpu.png>]
 <CPU_3_start_addi.png, id=226, 1853.92625pt x 515.9275pt>
 File: CPU_3_start_addi.png Graphic file (type png)
 <use CPU_3_start_addi.png>
-Package pdftex.def Info: CPU_3_start_addi.png  used on input line 586.
+Package pdftex.def Info: CPU_3_start_addi.png  used on input line 594.
 (pdftex.def)             Requested size: 472.03123pt x 131.35902pt.
 <CPU_4_start_beq.png, id=227, 1452.42625pt x 445.665pt>
 File: CPU_4_start_beq.png Graphic file (type png)
 <use CPU_4_start_beq.png>
-Package pdftex.def Info: CPU_4_start_beq.png  used on input line 590.
+Package pdftex.def Info: CPU_4_start_beq.png  used on input line 598.
 (pdftex.def)             Requested size: 472.03123pt x 144.8394pt.
  [13 <./CPU_1_jump.png> <./CPU_3_start_addi.png>]
 <CPU_2_reg_data.png, id=236, 1163.34625pt x 784.9325pt>
 File: CPU_2_reg_data.png Graphic file (type png)
 <use CPU_2_reg_data.png>
-Package pdftex.def Info: CPU_2_reg_data.png  used on input line 595.
+Package pdftex.def Info: CPU_2_reg_data.png  used on input line 603.
 (pdftex.def)             Requested size: 472.03123pt x 318.49477pt.
 <CPU_5_next1_lw.png, id=237, 1262.7175pt x 463.7325pt>
 File: CPU_5_next1_lw.png Graphic file (type png)
 <use CPU_5_next1_lw.png>
-Package pdftex.def Info: CPU_5_next1_lw.png  used on input line 602.
+Package pdftex.def Info: CPU_5_next1_lw.png  used on input line 610.
 (pdftex.def)             Requested size: 472.03123pt x 173.3544pt.
 <CPU_6_next1_beq.png, id=238, 1459.4525pt x 464.73625pt>
 File: CPU_6_next1_beq.png Graphic file (type png)
 <use CPU_6_next1_beq.png>
-Package pdftex.def Info: CPU_6_next1_beq.png  used on input line 606.
+Package pdftex.def Info: CPU_6_next1_beq.png  used on input line 614.
 (pdftex.def)             Requested size: 472.03123pt x 150.30708pt.
 
 [14 <./CPU_4_start_beq.png> <./CPU_2_reg_data.png>]
 <CPU_7_final.png, id=244, 1660.2025pt x 492.84125pt>
 File: CPU_7_final.png Graphic file (type png)
 <use CPU_7_final.png>
-Package pdftex.def Info: CPU_7_final.png  used on input line 614.
+Package pdftex.def Info: CPU_7_final.png  used on input line 622.
 (pdftex.def)             Requested size: 472.03123pt x 140.1228pt.
 <CPU_OR.png, id=246, 1339.0025pt x 787.94376pt>
 File: CPU_OR.png Graphic file (type png)
 <use CPU_OR.png>
-Package pdftex.def Info: CPU_OR.png  used on input line 624.
+Package pdftex.def Info: CPU_OR.png  used on input line 632.
 (pdftex.def)             Requested size: 472.03123pt x 277.76825pt.
  [15 <./CPU_5_next1_lw.png> <./CPU_6_next1_beq.png> <./CPU_7_final.png>]
 <sim_asm.png, id=254, 995.72pt x 902.37125pt>
 File: sim_asm.png Graphic file (type png)
 <use sim_asm.png>
-Package pdftex.def Info: sim_asm.png  used on input line 639.
+Package pdftex.def Info: sim_asm.png  used on input line 647.
 (pdftex.def)             Requested size: 472.03123pt x 427.79088pt.
  [16 <./CPU_OR.png>] [17 <./sim_asm.png>] (./Lab4_PB18111697_ÍõÕÂå«.aux)
 
@@ -1499,7 +1499,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  31476 strings out of 492623
  579035 string characters out of 6133291
- 943565 words of memory out of 5000000
+ 983955 words of memory out of 5000000
  34510 multiletter control sequences out of 15000+600000
  595559 words of font info for 259 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1551,7 +1551,7 @@ s/type1/public/amsfonts/cm/cmr12.pfb><g:/texlive/2019/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr5.pfb><g:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr6.pfb><g:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
 .pfb>
-Output written on Lab4_PB18111697_ÍõÕÂå«.pdf (17 pages, 1331739 bytes).
+Output written on Lab4_PB18111697_ÍõÕÂå«.pdf (17 pages, 1354464 bytes).
 PDF statistics:
  614 PDF objects out of 1000 (max. 8388607)
  382 compressed objects within 4 object streams

@@ -14,7 +14,7 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.edge_taker
 Compiling module dist_mem_gen_v8_0_13.dist_mem_gen_v8_0_13(C_FAMILY="a...
-Compiling module xil_defaultlib.dist_mem_256x32
+Compiling module xil_defaultlib.dist_mem_512x32
 Compiling module xil_defaultlib.register_file
 Compiling module xil_defaultlib.ALU
 Compiling module xil_defaultlib.alu_control

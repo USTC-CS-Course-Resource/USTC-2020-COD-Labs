@@ -34,7 +34,7 @@ wire [7:0] an;
 wire [7:0] seg;
 wire [15:0] led;
 
-dbu dbu(clk, rst, sel, mem_rf, step, succ, inc, dec, an, seg, led);
+cpu_top cpu_top(clk, rst, sel, mem_rf, step, succ, inc, dec, an, seg, led);
 
 initial begin
     rst = 1'b1;

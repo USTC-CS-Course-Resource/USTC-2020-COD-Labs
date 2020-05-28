@@ -54,6 +54,24 @@ module sort
     // Data Path
     //// mux
     ////// 用于交换的mux
+    mux2 #(4) mux2_0(m0, x0, (s1), (i0));
+    mux3 #(4) mux3_1(m1, x1, (s0), (s2), (i1));
+    mux3 #(4) mux3_2(m2, x2, (s1), (s3), (i2));
+    mux2 #(4) mux2_3(m3, (x3), (s2), (i3));
+    ////// 用于输入到ALU的mux
+    mux3 #(.WIDTH(2*N)) mux_ab(mab, {s0, s1}, {s1, s2}, {s2, s3}, {alu_a, alu_b});
+    //// register
+    register #(4) register0(i0, en0, rst, clk, s0);
+    register #(4) register1(i1, en1, rst, clk, s1);
+    register #(4) register2(i2, en2, rst, clk, s2);
+    register #(4) register3(i3, en3, rst, clk, s3);
+    //// ALU
+    ALU #(4) ALU(y, zf, cf, of, alu_a, alu_b, SUB);
+    
+    /*
+    // Data Path
+    //// mux
+    ////// 用于交换的mux
     mux2 mux2_0(.select(m0), .in0(x0), .in1(s1), .out(i0));
     mux3 mux3_1(.select(m1), .in0(x1), .in1(s0), .in2(s2), .out(i1));
     mux3 mux3_2(.select(m2), .in0(x2), .in1(s1), .in2(s3), .out(i2));
@@ -67,6 +85,7 @@ module sort
     register register3(.data(i3), .en(en3), .rst(rst), .clk(clk), .r(s3));
     //// ALU
     ALU ALU(.a(alu_a), .b(alu_b), .m(SUB), .cf(cf), .y(y), .of(of), .zf(zf));
+    */
     
     always @(*)
     begin

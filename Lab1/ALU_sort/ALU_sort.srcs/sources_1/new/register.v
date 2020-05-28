@@ -18,23 +18,20 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
-module register
-    # (parameter WIDTH = 4)
-    (
-    input [WIDTH-1 : 0] data,   // ��������
-    input en,   // ʹ���ź�
-    input rst,  // ��λ�ź�
-    input clk,  // ʱ���ź�
-    output reg [WIDTH-1: 0] r   // �������
+module register #(parameter N = 4)(
+    input clk,
+    input rst,
+    input en,
+    input [N-1:0] data,
+    output reg [N-1:0] r
     );
-    
     always @(posedge clk or posedge rst)
-    begin
-        if(rst) r <= {WIDTH{1'b0}};
-        else if(en) r <= data;
-        else r <= r;
-    end
-    
+        begin
+            if(rst)
+                r <= 0;
+            else if(en)
+                r <= data;
+            else
+                r <= data;
+        end
 endmodule

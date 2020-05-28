@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Fri May 22 14:38:11 2020
+// Date        : Wed May 27 19:50:30 2020
 // Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               D:/VivadoProject/COD/Lab4/Multicycle_CPU_more/Multicycle_CPU_more.sim/sim_1/synth/timing/xsim/dbu_tb_time_synth.v

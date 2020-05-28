@@ -51,7 +51,7 @@ always @(*) begin
                 default: alu_m = 3'b111;
             endcase
         end
-        ADDI_alu_op, LW_alu_op, SW_alu_op: begin
+        2'b00: begin
             alu_m = ALU_ADD;
         end
         BEQ_alu_op: begin

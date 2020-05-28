@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -55,7 +54,7 @@ synth_design -top sort -part xc7a100tcsg324-1
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef sort.dcp
+write_checkpoint -force -noxdef -incremental_synth sort.dcp
 create_report "synth_1_synth_report_utilization_0" "report_utilization -file sort_utilization_synth.rpt -pb sort_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

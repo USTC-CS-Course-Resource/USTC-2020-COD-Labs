@@ -31,19 +31,19 @@ input inc,
 input dec,
 output [7:0] an,
 output [7:0] seg,
-output [15:0] led
+output [15:0] led,
+output [31:0] dbu_mem_rf_addr,   // DBU选择地址
+input [31:0] dbu_rf_data,      // DBU选择地址的寄存器堆数据
+input [31:0] dbu_mem_data,     // DBU选择地址的存储器数据
+input [31:0] dbu_pc,           // PC
+input [31:0] dbu_ir,           // IR
+input [31:0] dbu_md,           // MD, 存储器中读出数据寄存器
+input [31:0] dbu_a,            // A
+input [31:0] dbu_b,            // B
+input [31:0] dbu_alu_out,      // ALUOut
+input [15:0] dbu_status,
+output step_edge
 );
-
-wire [31:0] dbu_mem_rf_addr;
-wire [31:0] dbu_rf_data;
-wire [31:0] dbu_mem_data;
-wire [31:0] dbu_pc;
-wire [31:0] dbu_ir;
-wire [31:0] dbu_md;
-wire [31:0] dbu_a;
-wire [31:0] dbu_b;
-wire [31:0] dbu_alu_out;
-wire [15:0] dbu_status;
 
 reg [31:0] value;
 
@@ -52,7 +52,7 @@ assign dbu_mem_rf_addr = addr;
 
 wire inc_edge;
 wire dec_edge;
-wire step_edge;
+//wire step_edge;
 edge_taker #(.N(1)) inc_edge_taker(.clk(clk), .rst(rst), .in(inc), .out(inc_edge));
 edge_taker #(.N(1)) dec_edge_taker(.clk(clk), .rst(rst), .in(dec), .out(dec_edge));
 edge_taker #(.N(1)) step_edge_taker(.clk(clk), .rst(rst), .in(step), .out(step_edge));
@@ -66,18 +66,6 @@ always @(posedge clk, posedge rst) begin
     end
 end
 
-cpu_multicycle cpu_multicycle(.clk(succ == 1'b1 ? clk : step_edge),
-                                .rst(rst),
-                                .dbu_mem_rf_addr(dbu_mem_rf_addr),
-                                .dbu_rf_data(dbu_rf_data),
-                                .dbu_mem_data(dbu_mem_data),
-                                .dbu_pc(dbu_pc),
-                                .dbu_ir(dbu_ir),
-                                .dbu_md(dbu_md),
-                                .dbu_a(dbu_a),
-                                .dbu_b(dbu_b),
-                                .dbu_alu_out(dbu_alu_out),
-                                .dbu_status(dbu_status));
 // LED显示
 assign led = sel == 3'b000 ? dbu_mem_rf_addr : dbu_status;
 

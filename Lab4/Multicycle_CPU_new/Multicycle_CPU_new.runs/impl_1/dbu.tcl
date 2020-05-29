@@ -60,7 +60,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
@@ -75,7 +74,7 @@ set rc [catch {
   set_property ip_output_repo D:/VivadoProject/COD/Lab4/Multicycle_CPU_new/Multicycle_CPU_new.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   add_files -quiet D:/VivadoProject/COD/Lab4/Multicycle_CPU_new/Multicycle_CPU_new.runs/synth_1/dbu.dcp
-  read_ip -quiet d:/VivadoProject/COD/Lab4/Multicycle_CPU_new/Multicycle_CPU_new.srcs/sources_1/ip/dist_mem_512x32/dist_mem_512x32.xci
+  read_ip -quiet D:/VivadoProject/COD/Lab4/Multicycle_CPU_new/Multicycle_CPU_new.srcs/sources_1/ip/dist_mem_512x32/dist_mem_512x32.xci
   read_xdc D:/VivadoProject/COD/Lab4/Multicycle_CPU_new/Multicycle_CPU_new.srcs/constrs_1/new/constraints.xdc
   link_design -top dbu -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb

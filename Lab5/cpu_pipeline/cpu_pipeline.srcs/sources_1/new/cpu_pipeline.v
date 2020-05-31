@@ -43,8 +43,7 @@ output [31:0] DBU_EX_MEM_B,
 output [4:0] DBU_EX_MEM_WA,
 output [31:0] DBU_MEM_WB_MDR,
 output [31:0] DBU_MEM_WB_Y,
-output [4:0] DBU_MEM_WB_WA,
-output [15:0] DBU_status
+output [4:0] DBU_MEM_WB_WA
 );
 
 // 控制信号
@@ -102,22 +101,25 @@ wire [31:0] rf_rd1;
 wire [31:0] rf_rd2;
 
 // 传输数据给 DBU
+//// IF_ID段
 assign DBU_PC = PC;
 assign DBU_IF_ID_IR = IF_ID_IR;
 assign DBU_IF_ID_NPC = IF_ID_NPC;
-
+//// ID_EX段
 assign DBU_ID_EX_A = ID_EX_A;
 assign DBU_ID_EX_B = ID_EX_B;
 assign DBU_ID_EX_IMM = ID_EX_IMM;
 assign DBU_ID_EX_IR = ID_EX_IR;
-
+//// EX_MEM段
 assign DBU_EX_MEM_Y = EX_MEM_Y;
 assign DBU_EX_MEM_B = EX_MEM_B;
 assign DBU_EX_MEM_WA = EX_MEM_WA;
-
+//// MEM_WB段
 assign DBU_MEM_WB_MDR = MEM_WB_MDR;
 assign DBU_MEM_WB_Y = MEM_WB_Y;
 assign DBU_MEM_WB_WA = MEM_WB_WA;
+
+
 
 
 // IF 段

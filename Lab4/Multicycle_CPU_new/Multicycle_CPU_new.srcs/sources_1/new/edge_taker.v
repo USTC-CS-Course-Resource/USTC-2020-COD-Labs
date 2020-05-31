@@ -23,9 +23,9 @@
 module edge_taker
     #(parameter N = 1)
     (
-    input clk, rst, // 时钟(上升沿有效), 复位(异步复位, 高电平有效)
-    input [N-1: 0]in,   // 输入信号
-    output [N-1: 0] out   // 输出信号
+    input clk, rst,
+    input [N-1: 0]in,
+    output [N-1: 0] out
     );
     
     reg [N-1: 0] in1 = 0;

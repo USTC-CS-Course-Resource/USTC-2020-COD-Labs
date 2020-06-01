@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1590929117">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1590978691">
   <File Type="PA-TCL" Name="dbu.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="dbu_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="dbu_reports.tcl"/>
@@ -103,7 +103,6 @@
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="dbu"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

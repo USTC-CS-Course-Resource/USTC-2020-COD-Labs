@@ -119,9 +119,6 @@ assign DBU_MEM_WB_MDR = MEM_WB_MDR;
 assign DBU_MEM_WB_Y = MEM_WB_Y;
 assign DBU_MEM_WB_WA = MEM_WB_WA;
 
-
-
-
 // IF ¶Î
 wire [31:0] im_instr;
 instr_mem_256x32 mem_instr(.a(PC >> 2),
@@ -134,14 +131,13 @@ register_syn #(.N(32))
                .wd(PC+4),
                .d(IF_ID_NPC));
               
-register_syn #(.N(32+32)) 
+register_syn #(.N(32)) 
     IF_ID(.clk(clk),
           .rst(rst),
           .wd(im_instr),
           .we(flush_IF_ID_we && ~stall),
           .d(IF_ID_IR));
        
-
 // ID¶Î
 assign ID_instr_imm = {{16{IF_ID_IR[15]}}, IF_ID_IR[15:0]};
 assign ID_instr_25_0_sll_2 = IF_ID_IR << 2;

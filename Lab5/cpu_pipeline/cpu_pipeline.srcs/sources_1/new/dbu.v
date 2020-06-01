@@ -104,6 +104,7 @@ always @(*) begin
             case(sel1)
                 2'b00: value = DBU_IF_ID_NPC;
                 2'b01: value = DBU_IF_ID_IR;
+                default: value = 32'h0000_0000;
             endcase
         end
         3'b011: begin

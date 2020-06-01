@@ -39,7 +39,6 @@ module cpu_tb();
     wire [31:0] DBU_MEM_WB_MDR;
     wire [31:0] DBU_MEM_WB_Y;
     wire [4:0] DBU_MEM_WB_WA;
-    wire [15:0] DBU_status;
     
     cpu_pipeline cpu_pipeline(
                             clk,
@@ -59,8 +58,7 @@ module cpu_tb();
                             DBU_EX_MEM_WA,
                             DBU_MEM_WB_MDR,
                             DBU_MEM_WB_Y,
-                            DBU_MEM_WB_WA,
-                            DBU_status);
+                            DBU_MEM_WB_WA);
         
     initial begin
         DBU_mem_rf_addr = 32'h0000_0004;
@@ -124,6 +122,7 @@ module cpu_tb();
         clk = ~clk; #5; clk = ~clk; #5;
         
         clk = ~clk; #5; clk = ~clk; #5;
+        
         $finish;
     end
     

@@ -52,16 +52,17 @@ reg mem_read;
 reg mem_write;
 reg reg_write;
 reg mem_to_reg;
-reg M_branch;
+reg EX_MEM_is_branch;
+reg EX_MEM_had_branched;
 
 assign EX = {alu_src, alu_op, reg_dst};
-assign M = {M_branch, mem_write, mem_read};
+assign M = {EX_MEM_had_branched, EX_MEM_is_branch, mem_write, mem_read};
 assign WB = {mem_to_reg, reg_write};
 
 reg beq_j;
 
 always @(*) begin
-    {reg_dst, alu_op, alu_src, mem_read, mem_write, reg_write, mem_to_reg, M_branch} = 12'h000;
+    {reg_dst, alu_op, alu_src, mem_read, mem_write, reg_write, mem_to_reg, EX_MEM_is_branch, EX_MEM_had_branched} = 12'h000;
     case(opcode)
         ADD_op: begin
             reg_dst = 1'b1;
@@ -86,10 +87,10 @@ always @(*) begin
             mem_write = 1'b1;
         end
         BEQ_op: begin
-            M_branch = 1'b1;
+            EX_MEM_is_branch = 1'b1;
             alu_op = 2'b01; // ×ö¼õ·¨
         end
-        default: {reg_dst, alu_op, alu_src, mem_read, mem_write, reg_write, mem_to_reg, M_branch} = 12'h000;
+        default: {reg_dst, alu_op, alu_src, mem_read, mem_write, reg_write, mem_to_reg, EX_MEM_is_branch, EX_MEM_had_branched} = 12'h000;
     endcase
 end
 
@@ -99,17 +100,20 @@ endmodule
 module pc_src_choose
 (
 input is_j,
-input EX_MEM_branch,
+input EX_MEM_is_branch,
+input EX_MEM_had_branched,
 input EX_MEM_ZF,
 output reg [1:0] pc_src,
-output reg do_branch
+output reg flush_IF_to_EX
 );
 
 always @(*) begin
-    do_branch = 1'b0;
-    if(EX_MEM_branch && EX_MEM_ZF) begin
+    flush_IF_to_EX = 1'b0;
+    if(EX_MEM_is_branch && EX_MEM_ZF) begin
         pc_src = 1'b01;
-        do_branch = 1'b1;
+        if(~EX_MEM_had_branched) begin
+            flush_IF_to_EX = 1'b1;
+        end
     end
     else if(is_j) pc_src = 2'b10;
     else pc_src = 2'b00;

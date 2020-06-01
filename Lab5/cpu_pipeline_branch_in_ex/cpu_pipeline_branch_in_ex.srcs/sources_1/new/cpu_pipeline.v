@@ -23,7 +23,8 @@
 module cpu_pipeline
 #(
 parameter BEQ_op = 6'b000100,
-parameter J_op = 6'b000010
+parameter J_op = 6'b000010,
+parameter HIGH = 5
 )
 (
 input clk,  // Ê±ÖÓ, ÉÏÉýÑØÓÐÐ§
@@ -58,7 +59,7 @@ wire [1:0] pc_src;
 wire integer flush_counter;
 wire flush_pc_we;
 wire flush_IF_ID_we;
-wire do_branch;
+wire flush_IF_to_EX;
 //// ×ª·¢¿ØÖÆÆ÷
 wire [1:0] alu_a_src;
 wire [1:0] alu_b_src;
@@ -71,23 +72,27 @@ reg [31:0] PC;
 //// IF/ID¶Î
 wire [31:0] IF_ID_NPC;
 wire [31:0] IF_ID_IR;
+wire IF_ID_had_branched;
+wire [HIGH:0] IF_ID_lowpc;
 //// ID/EX¶Î
 wire [1:0] ID_EX_WB;
-wire [2:0] ID_EX_M;
+wire [3:0] ID_EX_M;
 wire [3:0] ID_EX_EX;
 wire [31:0] ID_EX_NPC;
 wire [31:0] ID_EX_A;
 wire [31:0] ID_EX_B;
 wire [31:0] ID_EX_IMM;
 wire [31:0] ID_EX_IR;
+wire [HIGH:0] ID_EX_lowpc;
 //// EX/MEM
 wire [1:0] EX_MEM_WB;
-wire [2:0] EX_MEM_M;
+wire [3:0] EX_MEM_M;
 wire [31:0] EX_MEM_NPC_;
 wire EX_MEM_ZF;
 wire [31:0] EX_MEM_Y;
 wire [31:0] EX_MEM_B;
 wire [4:0] EX_MEM_WA;
+wire [HIGH:0] EX_MEM_lowpc;
 //// MEM/WB
 wire [1:0] MEM_WB_WB;
 wire [31:0] MEM_WB_MDR;
@@ -136,21 +141,24 @@ assign DBU_MEM_WB_ctrl = ID_EX_WB;
 wire [31:0] im_instr;
 instr_mem_256x32 mem_instr(.a(PC >> 2),
                            .spo(im_instr));
-
-register_syn #(.N(32)) 
-    rIF_ID_NPC(.clk(clk),
-               .rst(rst || do_branch),
-               .we(~stall),
-               .wd(PC+4),
-               .d(IF_ID_NPC));
-              
-register_syn #(.N(32)) 
+                           
+register_syn #(.N(32+32+1+HIGH+1)) 
     IF_ID(.clk(clk),
-          .rst(rst || do_branch),
-          .wd(im_instr),
+          .rst(rst || flush_IF_to_EX),
           .we(~stall),
-          .d(IF_ID_IR));
-       
+          .wd({PC+4, im_instr, shall_branch, PC[HIGH:0]}),
+          .d({IF_ID_NPC, IF_ID_IR, IF_ID_had_branched, IF_ID_lowpc}));
+          
+//// ·ÖÖ§Ô¤²âÆ÷ 
+branch_predictor #(.HIGH(5))
+    branch_predictor(.clk(clk),
+                     .rst(rst),
+                     .im_instr_opcode(im_instr[31:26]),
+                     .EX_MEM_lowpc(EX_MEM_lowpc),
+                     .EX_MEM_is_branch(EX_MEM_M[2]),
+                     .EX_MEM_ZF(EX_MEM_ZF),
+                     .shall_branch(shall_branch));
+
 // ID¶Î
 assign ID_instr_imm = {{16{IF_ID_IR[15]}}, IF_ID_IR[15:0]};
 assign im_instr_25_0_sll_2 = im_instr << 2;
@@ -167,12 +175,12 @@ register_file register_file(.clk(clk),
                             .wa(MEM_WB_WA),
                             .wd(WB_wb_data));
 //// ID/EX ¶Î¼ä¼Ä´æÆ÷
-register_syn #(.N(2+3+4+32+32+32+32+32))
+register_syn #(.N(2+4+4+32+32+32+32+32+HIGH+1))
     ID_EX(.clk(clk),
-          .rst(rst || stall || do_branch),
+          .rst(rst || stall || flush_IF_to_EX),
           .we(1'b1),
-          .wd({ctrl_wb, ctrl_m, ctrl_ex, IF_ID_NPC, rf_rd1, rf_rd2, ID_instr_imm, IF_ID_IR}),
-          .d({ID_EX_WB, ID_EX_M, ID_EX_EX, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_IMM, ID_EX_IR}));
+          .wd({ctrl_wb, {IF_ID_had_branched,ctrl_m}, ctrl_ex, IF_ID_NPC, rf_rd1, rf_rd2, ID_instr_imm, IF_ID_IR, IF_ID_lowpc}),
+          .d({ID_EX_WB, ID_EX_M, ID_EX_EX, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_IMM, ID_EX_IR, ID_EX_lowpc}));
 
 //// ¿ØÖÆµ¥Ôª
 control_unit ctrl_unit(.equal(rf_rd1 == rf_rd2 ? 1'b1 : 1'b0),
@@ -182,12 +190,13 @@ control_unit ctrl_unit(.equal(rf_rd1 == rf_rd2 ? 1'b1 : 1'b0),
                        .WB(ctrl_wb),
                        .M(ctrl_m),
                        .EX(ctrl_ex));
-                       
+//// pc_srcµÄ¾ö¶¨          
 pc_src_choose pc_src_choose(.is_j(im_instr[31:26] == J_op),
-                            .EX_MEM_branch(EX_MEM_M[2]),
+                            .EX_MEM_had_branched(EX_MEM_M[3]),
+                            .EX_MEM_is_branch(EX_MEM_M[2]),
                             .EX_MEM_ZF(EX_MEM_ZF),
                             .pc_src(pc_src),
-                            .do_branch(do_branch));
+                            .flush_IF_to_EX(flush_IF_to_EX));
 //// ¾ºÕù³åÍ»¼ì²âÆ÷
 hazard_detection_unit
     hazard_detection_unit(.mem_read(ID_EX_M[0]),
@@ -258,15 +267,16 @@ ALU ALU(.y(alu_y),
         .a(alu_a),
         .b(alu_b),
         .m(alu_m));
- 
-
+        
 //// EX/MEM¶Î¼ä¼Ä´æÆ÷
-register_syn #(.N(2+3+1+32+32+5+32))
+register_syn #(.N(2+4+1+32+32+5+32+(HIGH+1)))
     EX_MEM(.clk(clk),
-           .rst(rst || do_branch),
+           .rst(rst || flush_IF_to_EX),
            .we(1'b1),
-           .wd({ID_EX_WB, ID_EX_M, alu_zf, alu_y, ID_EX_B, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11], ID_EX_NPC + (ID_EX_IMM << 2)}),
-           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_}));
+           .wd({ID_EX_WB, ID_EX_M, alu_zf, alu_y, 
+                ID_EX_B, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11],
+                ID_EX_NPC + (ID_EX_IMM << 2), ID_EX_lowpc}),
+           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_, EX_MEM_lowpc}));
 
 // MEM¶Î
 data_mem_256x32 data_mem(.a(EX_MEM_Y >> 2),
@@ -280,7 +290,7 @@ data_mem_256x32 data_mem(.a(EX_MEM_Y >> 2),
 //// MEM/WB¶Î¼ä¼Ä´æÆ÷
 register_syn #(.N(2+32+32+5))
     MEM_WB(.clk(clk),
-           .rst(rst || do_branch),
+           .rst(rst),
            .we(1'b1),
            .wd({EX_MEM_WB, mem_out_rd, EX_MEM_Y, EX_MEM_WA}),
            .d({MEM_WB_WB, MEM_WB_MDR, MEM_WB_Y, MEM_WB_WA}));

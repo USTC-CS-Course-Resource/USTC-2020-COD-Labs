@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="169027fs"></ZoomStartTime>
-      <ZoomEndTime time="275695fs"></ZoomEndTime>
-      <Cursor1Time time="200000fs"></Cursor1Time>
+      <ZoomStartTime time="76370fs"></ZoomStartTime>
+      <ZoomEndTime time="181885fs"></ZoomEndTime>
+      <Cursor1Time time="350000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="171"></NameColumnWidth>
+      <NameColumnWidth column_width="163"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="29" />
@@ -62,6 +62,12 @@
       <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/branch_predictor/shall_branch" type="logic">
+      <obj_property name="ElementShortName">shall_branch</obj_property>
+      <obj_property name="ObjectShortName">shall_branch</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/stall" type="logic">
       <obj_property name="ElementShortName">stall</obj_property>
       <obj_property name="ObjectShortName">stall</obj_property>
@@ -76,8 +82,8 @@
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/ID_EX_M" type="array">
-      <obj_property name="ElementShortName">ID_EX_M[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ID_EX_M[2:0]</obj_property>
+      <obj_property name="ElementShortName">ID_EX_M[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ID_EX_M[3:0]</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
@@ -121,17 +127,11 @@
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/EX_MEM_M" type="array">
-      <obj_property name="ElementShortName">EX_MEM_M[2:0]</obj_property>
-      <obj_property name="ObjectShortName">EX_MEM_M[2:0]</obj_property>
+      <obj_property name="ElementShortName">EX_MEM_M[3:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_MEM_M[3:0]</obj_property>
       <obj_property name="CustomSignalColor">#FF0080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/cpu_tb/cpu_pipeline/pc_src_choose/EX_MEM_branch" type="logic">
-      <obj_property name="ElementShortName">EX_MEM_branch</obj_property>
-      <obj_property name="ObjectShortName">EX_MEM_branch</obj_property>
-      <obj_property name="CustomSignalColor">#FF0080</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/pc_src_choose/EX_MEM_ZF" type="logic">
       <obj_property name="ElementShortName">EX_MEM_ZF</obj_property>

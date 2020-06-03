@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="243343fs"></ZoomStartTime>
-      <ZoomEndTime time="347332fs"></ZoomEndTime>
-      <Cursor1Time time="330000fs"></Cursor1Time>
+      <ZoomStartTime time="2262583fs"></ZoomStartTime>
+      <ZoomEndTime time="2343484fs"></ZoomEndTime>
+      <Cursor1Time time="2330000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="150"></NameColumnWidth>
-      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+      <NameColumnWidth column_width="165"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="32" />
    <wvobject fp_name="/cpu_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -141,6 +141,18 @@
       <obj_property name="ObjectShortName">DBU_EX_MEM_B[31:0]</obj_property>
       <obj_property name="CustomSignalColor">#FF0080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/alu_a_src" type="array">
+      <obj_property name="ElementShortName">alu_a_src[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_a_src[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/alu_b_src" type="array">
+      <obj_property name="ElementShortName">alu_b_src[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b_src[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/ALU/y" type="array">
+      <obj_property name="ElementShortName">y[31:0]</obj_property>
+      <obj_property name="ObjectShortName">y[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/ALU/a" type="array">
       <obj_property name="ElementShortName">a[31:0]</obj_property>

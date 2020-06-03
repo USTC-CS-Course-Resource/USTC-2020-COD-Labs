@@ -101,7 +101,6 @@ module pc_src_choose
 (
 input is_j,
 input EX_MEM_is_branch,
-input EX_MEM_had_branched,
 input EX_MEM_ZF,
 output reg [1:0] pc_src,
 output reg flush_IF_to_EX
@@ -111,9 +110,7 @@ always @(*) begin
     flush_IF_to_EX = 1'b0;
     if(EX_MEM_is_branch && EX_MEM_ZF) begin
         pc_src = 1'b01;
-        if(~EX_MEM_had_branched) begin
-            flush_IF_to_EX = 1'b1;
-        end
+        flush_IF_to_EX = 1'b1;
     end
     else if(is_j) pc_src = 2'b10;
     else pc_src = 2'b00;

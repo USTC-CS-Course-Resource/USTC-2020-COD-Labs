@@ -6,17 +6,16 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipel
 INFO: [VRFC 10-311] analyzing module ALU
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/alu_control.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module alu_control
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/branch_predictor.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module branch_predictor
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/control_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module control_unit
 INFO: [VRFC 10-311] analyzing module pc_src_choose
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module cpu_pipeline
-INFO: [VRFC 10-2458] undeclared symbol shall_branch, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:149]
-INFO: [VRFC 10-2458] undeclared symbol alu_zf, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:264]
-INFO: [VRFC 10-2458] undeclared symbol alu_cf, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:265]
-INFO: [VRFC 10-2458] undeclared symbol alu_of, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:266]
+INFO: [VRFC 10-2458] undeclared symbol shall_branch, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:144]
+INFO: [VRFC 10-2458] undeclared symbol IF_ID_had_branched, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:145]
+INFO: [VRFC 10-2458] undeclared symbol alu_zf, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:248]
+INFO: [VRFC 10-2458] undeclared symbol alu_cf, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:249]
+INFO: [VRFC 10-2458] undeclared symbol alu_of, assumed default net type wire [D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/cpu_pipeline.v:250]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/forwarding_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module forwarding_unit
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/VivadoProject/COD/Lab5/cpu_pipeline_branch_in_ex/cpu_pipeline_branch_in_ex.srcs/sources_1/new/hazard_detection_unit.v" into library xil_defaultlib

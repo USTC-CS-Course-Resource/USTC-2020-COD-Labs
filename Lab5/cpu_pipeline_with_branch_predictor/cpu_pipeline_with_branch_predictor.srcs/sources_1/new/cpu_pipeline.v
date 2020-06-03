@@ -55,7 +55,7 @@ output [1:0] DBU_MEM_WB_ctrl
 // ¿ØÖÆÐÅºÅ
 //// ¿ØÖÆµ¥Ôª
 wire pc_we;
-wire [1:0] pc_src;
+wire [2:0] pc_src;
 wire integer flush_counter;
 wire flush_pc_we;
 wire flush_IF_ID_we;
@@ -88,6 +88,7 @@ wire [HIGH:0] ID_EX_lowpc;
 wire [1:0] EX_MEM_WB;
 wire [3:0] EX_MEM_M;
 wire [31:0] EX_MEM_NPC_;
+wire [31:0] EX_MEM_NPC;
 wire EX_MEM_ZF;
 wire [31:0] EX_MEM_Y;
 wire [31:0] EX_MEM_B;
@@ -148,7 +149,7 @@ register_syn #(.N(32+32+1+HIGH+1))
     IF_ID(.clk(clk),
           .rst(rst || flush_IF_to_EX),
           .we(~stall),
-          .wd({PC+4, im_instr, shall_branch, PC[HIGH:0]}),
+          .wd({PC+4, im_instr, shall_branch, PC[HIGH+2:2]}),
           .d({IF_ID_NPC, IF_ID_IR, IF_ID_had_branched, IF_ID_lowpc}));
           
 //// ·ÖÖ§Ô¤²âÆ÷ 
@@ -156,6 +157,7 @@ branch_predictor #(.HIGH(5))
     branch_predictor(.clk(clk),
                      .rst(rst),
                      .im_instr_opcode(im_instr[31:26]),
+                     .im_instr_lowpc(PC[HIGH+2:2]),
                      .EX_MEM_lowpc(EX_MEM_lowpc),
                      .EX_MEM_is_branch(EX_MEM_M[2]),
                      .EX_MEM_ZF(EX_MEM_ZF),
@@ -176,6 +178,7 @@ register_file register_file(.clk(clk),
                             .we(MEM_WB_WB[0]),
                             .wa(MEM_WB_WA),
                             .wd(WB_wb_data));
+                            
 //// ID/EX ¶Î¼ä¼Ä´æÆ÷
 register_syn #(.N(2+4+4+32+32+32+32+32+HIGH+1))
     ID_EX(.clk(clk),
@@ -216,10 +219,11 @@ always @(posedge clk, posedge rst) begin
     else begin
         if(pc_we == 1'b1 && ~stall) begin
             case(pc_src)
-                2'b00: PC <= PC + 4;
-                2'b01: PC <= EX_MEM_NPC_;
-                2'b10: PC <= {PC[31: 28], im_instr_25_0_sll_2};
-                2'b11: PC <= PC + 4 + (im_instr_imm << 2);
+                3'b000: PC <= PC + 4;
+                3'b001: PC <= EX_MEM_NPC_;
+                3'b010: PC <= {PC[31: 28], im_instr_25_0_sll_2};
+                3'b011: PC <= PC + 4 + (im_instr_imm << 2);
+                3'b100: PC <= EX_MEM_NPC;
                 default: PC <= PC;
             endcase
         end
@@ -272,14 +276,14 @@ ALU ALU(.y(alu_y),
         .m(alu_m));
         
 //// EX/MEM¶Î¼ä¼Ä´æÆ÷
-register_syn #(.N(2+4+1+32+32+5+32+(HIGH+1)))
+register_syn #(.N(2+4+1+32+32+5+32+(HIGH+1)+32))
     EX_MEM(.clk(clk),
            .rst(rst || flush_IF_to_EX),
            .we(1'b1),
            .wd({ID_EX_WB, ID_EX_M, alu_zf, alu_y, 
                 ID_EX_B, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11],
-                ID_EX_NPC + (ID_EX_IMM << 2), ID_EX_lowpc}),
-           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_, EX_MEM_lowpc}));
+                ID_EX_NPC + (ID_EX_IMM << 2), ID_EX_lowpc, ID_EX_NPC}),
+           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_, EX_MEM_lowpc, EX_MEM_NPC}));
 
 // MEM¶Î
 data_mem_256x32 data_mem(.a(EX_MEM_Y >> 2),

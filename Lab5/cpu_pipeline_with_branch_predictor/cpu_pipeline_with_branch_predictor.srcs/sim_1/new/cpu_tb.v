@@ -90,37 +90,33 @@ initial begin
     DBU_mem_rf_addr = 32'h0000_000b;
     clk = ~clk; #5; clk = ~clk; #5;
     
-    DBU_mem_rf_addr = 32'h0000_0010;
+    DBU_mem_rf_addr = 32'h0000_0008;
+    //DBU_mem_rf_addr = 32'h0000_0010;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0011;
+    //DBU_mem_rf_addr = 32'h0000_0011;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0010;
+    //DBU_mem_rf_addr = 32'h0000_0010;
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     
     // _next1:
-    DBU_mem_rf_addr = 32'h0000_0008;
+    //DBU_mem_rf_addr = 32'h0000_0008;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0009;
+    //DBU_mem_rf_addr = 32'h0000_0009;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0010;
+    //DBU_mem_rf_addr = 32'h0000_0010;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0011;
+    //DBU_mem_rf_addr = 32'h0000_0011;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0010;
+    //DBU_mem_rf_addr = 32'h0000_0010;
     clk = ~clk; #5; clk = ~clk; #5;
     
     // _next2:
-    DBU_mem_rf_addr = 32'h0000_0000;
+    //DBU_mem_rf_addr = 32'h0000_0000;
     clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0003;
+    //DBU_mem_rf_addr = 32'h0000_0003;
     clk = ~clk; #5; clk = ~clk; #5;
     DBU_mem_rf_addr = 32'h0000_0008;
-    clk = ~clk; #5; clk = ~clk; #5;
-    clk = ~clk; #5; clk = ~clk; #5;
-    DBU_mem_rf_addr = 32'h0000_0002;
-    clk = ~clk; #5; clk = ~clk; #5;
-    clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
@@ -132,6 +128,7 @@ initial begin
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     
+    DBU_mem_rf_addr = 32'h0000_0002;
     clk = ~clk; #5; clk = ~clk; #5;
     $finish;
     

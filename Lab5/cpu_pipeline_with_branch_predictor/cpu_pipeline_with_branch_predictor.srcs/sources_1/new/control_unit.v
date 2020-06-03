@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+// 控制信号
 module control_unit
 #(
 parameter ADD_op = 6'b000000,
@@ -96,7 +96,7 @@ end
 
 endmodule
 
-
+// pc_src的选择
 module pc_src_choose
 (
 input is_j,
@@ -104,29 +104,81 @@ input EX_MEM_is_branch,
 input EX_MEM_had_branched,
 input EX_MEM_ZF,
 input shall_branch,
-output reg [1:0] pc_src,
+output reg [2:0] pc_src,
 output reg flush_IF_to_EX
 );
 
 always @(*) begin
     flush_IF_to_EX = 1'b0;
-    if(EX_MEM_is_branch && EX_MEM_ZF) begin
-        if(~EX_MEM_had_branched) begin
-            flush_IF_to_EX = 1'b1;
-            pc_src = 2'b01;
+    if(EX_MEM_is_branch) begin                          // 如果需要branch
+        if(EX_MEM_ZF) begin
+            if(~EX_MEM_had_branched) begin              // 之前预测不branch
+                flush_IF_to_EX = 1'b1;
+                pc_src = 3'b001;
+            end
+            else if(shall_branch) begin                 // 之前预测要branch, 并且又有一个branch
+                pc_src = 3'b011;
+            end
+            else begin                                  // 其他
+                pc_src = 3'b000;
+            end
         end
-        else if(shall_branch) begin
-            flush_IF_to_EX = 1'b0;
-            pc_src = 2'b11;
-        end
-        else begin
-            flush_IF_to_EX = 1'b0;
-            pc_src = 2'b00;
+        else begin                                      // 如果不需要branch                          
+            if(EX_MEM_had_branched) begin               // 但之前branch了
+                flush_IF_to_EX = 1'b1;
+                pc_src = 3'b100;
+            end
+            else if(shall_branch) begin                 // 并且又有一个branch
+                pc_src = 3'b011;
+            end
+            else begin                                  // 之前没有branch
+                pc_src = 3'b000;
+            end
         end
     end
-    else if(shall_branch) pc_src = 2'b11;
-    else if(is_j) pc_src = 2'b10;
-    else pc_src = 2'b00;
+    else if(shall_branch) pc_src = 3'b011;
+    else if(is_j) pc_src = 3'b010;
+    else pc_src = 3'b000;
+end
+
+endmodule
+
+// 分支预测器
+module branch_predictor
+#(
+parameter HIGH = 5    // cache地址最高位
+)
+(
+input clk,
+input rst,
+input [5:0] im_instr_opcode,
+input [HIGH:0] im_instr_lowpc,
+input [HIGH:0] EX_MEM_lowpc,
+input EX_MEM_is_branch,
+input EX_MEM_ZF,
+output shall_branch
+);
+
+localparam BEQ_op = 6'b000100;
+localparam CACHE_SIZE = {2'b10, {HIGH{1'b0}}}; // 根据 HIGH 判断缓存大小
+reg [1:0] cache[CACHE_SIZE-1:0];
+integer i;
+
+assign shall_branch = cache[im_instr_lowpc] >= 2'b10 && im_instr_opcode == BEQ_op ? 1'b1 : 1'b0;
+
+always @(posedge clk, posedge rst) begin
+    if(rst) begin
+        for(i = 0; i < CACHE_SIZE; i = i + 1) begin
+            cache[i] <= 2'b10;
+        end
+    end
+    else if(EX_MEM_is_branch) begin
+        case(EX_MEM_ZF)
+            1'b0: cache[EX_MEM_lowpc] <= cache[EX_MEM_lowpc] == 2'b00 ? 2'b00 : cache[EX_MEM_lowpc] - 2'b01;
+            1'b1: cache[EX_MEM_lowpc] <= cache[EX_MEM_lowpc] == 2'b11 ? 2'b11 : cache[EX_MEM_lowpc] + 2'b01;
+            default: cache[EX_MEM_lowpc] <= 2'b01;
+        endcase
+    end
 end
 
 endmodule

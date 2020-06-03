@@ -23,8 +23,7 @@
 module cpu_pipeline
 #(
 parameter BEQ_op = 6'b000100,
-parameter J_op = 6'b000010,
-parameter HIGH = 5
+parameter J_op = 6'b000010
 )
 (
 input clk,  // 时钟, 上升沿有效
@@ -72,27 +71,23 @@ reg [31:0] PC;
 //// IF/ID段
 wire [31:0] IF_ID_NPC;
 wire [31:0] IF_ID_IR;
-wire IF_ID_had_branched;
-wire [HIGH:0] IF_ID_lowpc;
 //// ID/EX段
 wire [1:0] ID_EX_WB;
-wire [3:0] ID_EX_M;
+wire [2:0] ID_EX_M;
 wire [3:0] ID_EX_EX;
 wire [31:0] ID_EX_NPC;
 wire [31:0] ID_EX_A;
 wire [31:0] ID_EX_B;
 wire [31:0] ID_EX_IMM;
 wire [31:0] ID_EX_IR;
-wire [HIGH:0] ID_EX_lowpc;
 //// EX/MEM
 wire [1:0] EX_MEM_WB;
-wire [3:0] EX_MEM_M;
+wire [2:0] EX_MEM_M;
 wire [31:0] EX_MEM_NPC_;
 wire EX_MEM_ZF;
 wire [31:0] EX_MEM_Y;
 wire [31:0] EX_MEM_B;
 wire [4:0] EX_MEM_WA;
-wire [HIGH:0] EX_MEM_lowpc;
 //// MEM/WB
 wire [1:0] MEM_WB_WB;
 wire [31:0] MEM_WB_MDR;
@@ -142,22 +137,12 @@ wire [31:0] im_instr;
 instr_mem_256x32 mem_instr(.a(PC >> 2),
                            .spo(im_instr));
                            
-register_syn #(.N(32+32+1+HIGH+1)) 
+register_syn #(.N(32+32+1)) 
     IF_ID(.clk(clk),
           .rst(rst || flush_IF_to_EX),
           .we(~stall),
-          .wd({PC+4, im_instr, shall_branch, PC[HIGH:0]}),
-          .d({IF_ID_NPC, IF_ID_IR, IF_ID_had_branched, IF_ID_lowpc}));
-          
-//// 分支预测器 
-branch_predictor #(.HIGH(5))
-    branch_predictor(.clk(clk),
-                     .rst(rst),
-                     .im_instr_opcode(im_instr[31:26]),
-                     .EX_MEM_lowpc(EX_MEM_lowpc),
-                     .EX_MEM_is_branch(EX_MEM_M[2]),
-                     .EX_MEM_ZF(EX_MEM_ZF),
-                     .shall_branch(shall_branch));
+          .wd({PC+4, im_instr, shall_branch}),
+          .d({IF_ID_NPC, IF_ID_IR, IF_ID_had_branched}));
 
 // ID段
 assign ID_instr_imm = {{16{IF_ID_IR[15]}}, IF_ID_IR[15:0]};
@@ -175,12 +160,12 @@ register_file register_file(.clk(clk),
                             .wa(MEM_WB_WA),
                             .wd(WB_wb_data));
 //// ID/EX 段间寄存器
-register_syn #(.N(2+4+4+32+32+32+32+32+HIGH+1))
+register_syn #(.N(2+3+4+32+32+32+32+321))
     ID_EX(.clk(clk),
           .rst(rst || stall || flush_IF_to_EX),
           .we(1'b1),
-          .wd({ctrl_wb, {IF_ID_had_branched,ctrl_m}, ctrl_ex, IF_ID_NPC, rf_rd1, rf_rd2, ID_instr_imm, IF_ID_IR, IF_ID_lowpc}),
-          .d({ID_EX_WB, ID_EX_M, ID_EX_EX, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_IMM, ID_EX_IR, ID_EX_lowpc}));
+          .wd({ctrl_wb, ctrl_m, ctrl_ex, IF_ID_NPC, rf_rd1, rf_rd2, ID_instr_imm, IF_ID_IR}),
+          .d({ID_EX_WB, ID_EX_M, ID_EX_EX, ID_EX_NPC, ID_EX_A, ID_EX_B, ID_EX_IMM, ID_EX_IR}));
 
 //// 控制单元
 control_unit ctrl_unit(.equal(rf_rd1 == rf_rd2 ? 1'b1 : 1'b0),
@@ -192,7 +177,6 @@ control_unit ctrl_unit(.equal(rf_rd1 == rf_rd2 ? 1'b1 : 1'b0),
                        .EX(ctrl_ex));
 //// pc_src的决定          
 pc_src_choose pc_src_choose(.is_j(im_instr[31:26] == J_op),
-                            .EX_MEM_had_branched(EX_MEM_M[3]),
                             .EX_MEM_is_branch(EX_MEM_M[2]),
                             .EX_MEM_ZF(EX_MEM_ZF),
                             .pc_src(pc_src),
@@ -269,14 +253,14 @@ ALU ALU(.y(alu_y),
         .m(alu_m));
         
 //// EX/MEM段间寄存器
-register_syn #(.N(2+4+1+32+32+5+32+(HIGH+1)))
+register_syn #(.N(2+3+1+32+32+5+32))
     EX_MEM(.clk(clk),
            .rst(rst || flush_IF_to_EX),
            .we(1'b1),
            .wd({ID_EX_WB, ID_EX_M, alu_zf, alu_y, 
                 ID_EX_B, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11],
-                ID_EX_NPC + (ID_EX_IMM << 2), ID_EX_lowpc}),
-           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_, EX_MEM_lowpc}));
+                ID_EX_NPC + (ID_EX_IMM << 2)}),
+           .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_}));
 
 // MEM段
 data_mem_256x32 data_mem(.a(EX_MEM_Y >> 2),

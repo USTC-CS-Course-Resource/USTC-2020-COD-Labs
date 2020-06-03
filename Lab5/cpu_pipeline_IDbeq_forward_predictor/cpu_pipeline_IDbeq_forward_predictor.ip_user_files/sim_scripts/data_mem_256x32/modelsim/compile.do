@@ -11,7 +11,7 @@ vlog -work dist_mem_gen_v8_0_13 -64 -incr \
 "../../../ipstatic/simulation/dist_mem_gen_v8_0.v" \
 
 vlog -work xil_defaultlib -64 -incr \
-"../../../../cpu_pipeline.srcs/sources_1/ip/data_mem_256x32/sim/data_mem_256x32.v" \
+"../../../../cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/ip/data_mem_256x32/sim/data_mem_256x32.v" \
 
 
 vlog -work xil_defaultlib \

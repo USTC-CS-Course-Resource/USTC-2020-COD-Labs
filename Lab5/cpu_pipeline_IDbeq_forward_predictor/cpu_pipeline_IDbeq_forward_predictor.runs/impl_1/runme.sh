@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.runs/impl_1'
+HD_PWD='D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -69,14 +69,14 @@ set rc [catch {
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.cache/wt [current_project]
-  set_property parent.project_path D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.xpr [current_project]
-  set_property ip_output_repo D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.cache/wt [current_project]
+  set_property parent.project_path D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.xpr [current_project]
+  set_property ip_output_repo D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.runs/synth_1/dbu.dcp
-  read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32.xci
-  read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32.xci
-  read_xdc D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.srcs/constrs_1/imports/VivadoProject/Nexys-4-DDR-Master.xdc
+  add_files -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.runs/synth_1/dbu.dcp
+  read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32.xci
+  read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32.xci
+  read_xdc D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/constrs_1/imports/VivadoProject/Nexys-4-DDR-Master.xdc
   link_design -top dbu -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]

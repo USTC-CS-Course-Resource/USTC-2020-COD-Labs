@@ -127,6 +127,8 @@ initial begin
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
+    clk = ~clk; #5; clk = ~clk; #5;
+    clk = ~clk; #5; clk = ~clk; #5;
     
     DBU_mem_rf_addr = 32'h0000_0002;
     clk = ~clk; #5; clk = ~clk; #5;

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Mon Jun  1 10:34:43 2020
+| Date             : Wed Jun  3 21:17:54 2020
 | Host             : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 | Command          : report_power -file dbu_power_routed.rpt -pb dbu_power_summary_routed.pb -rpx dbu_power_routed.rpx
 | Design           : dbu
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 15.553 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 15.624 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                     |
 | Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 15.190                           |
-| Device Static (W)        | 0.364                            |
+| Dynamic (W)              | 15.257                           |
+| Device Static (W)        | 0.367                            |
 | Effective TJA (C/W)      | 4.6                              |
-| Max Ambient (C)          | 14.0                             |
-| Junction Temperature (C) | 96.0                             |
+| Max Ambient (C)          | 13.7                             |
+| Junction Temperature (C) | 96.3                             |
 | Confidence Level         | Low                              |
 | Setting File             | ---                              |
 | Simulation Activity File | ---                              |
@@ -52,18 +52,18 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic              |     2.601 |     3111 |       --- |             --- |
-|   LUT as Logic           |     2.276 |     1252 |     63400 |            1.97 |
-|   CARRY4                 |     0.185 |       50 |     15850 |            0.32 |
-|   Register               |     0.070 |      880 |    126800 |            0.69 |
-|   LUT as Distributed RAM |     0.043 |      256 |     19000 |            1.35 |
-|   F7/F8 Muxes            |     0.020 |      521 |     63400 |            0.82 |
+| Slice Logic              |     4.948 |     3549 |       --- |             --- |
+|   LUT as Logic           |     4.651 |     1315 |     63400 |            2.07 |
+|   Register               |     0.123 |      978 |    126800 |            0.77 |
+|   CARRY4                 |     0.097 |       41 |     15850 |            0.26 |
+|   F7/F8 Muxes            |     0.070 |      748 |     63400 |            1.18 |
 |   BUFG                   |     0.006 |        1 |        32 |            3.13 |
-|   Others                 |     0.000 |       22 |       --- |             --- |
-| Signals                  |     3.908 |     2057 |       --- |             --- |
-| I/O                      |     8.680 |       26 |       210 |           12.38 |
-| Static Power             |     0.364 |          |           |                 |
-| Total                    |    15.553 |          |           |                 |
+|   LUT as Distributed RAM |    <0.001 |      256 |     19000 |            1.35 |
+|   Others                 |     0.000 |       19 |       --- |             --- |
+| Signals                  |     6.119 |     2161 |       --- |             --- |
+| I/O                      |     4.190 |       26 |       210 |           12.38 |
+| Static Power             |     0.367 |          |           |                 |
+| Total                    |    15.624 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     6.771 |       6.545 |      0.226 |
-| Vccaux    |       1.800 |     0.363 |       0.317 |      0.046 |
-| Vcco33    |       3.300 |     2.451 |       2.447 |      0.004 |
+| Vccint    |       1.000 |    11.331 |      11.103 |      0.228 |
+| Vccaux    |       1.800 |     0.198 |       0.152 |      0.046 |
+| Vcco33    |       3.300 |     1.180 |       1.176 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -137,26 +137,25 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------------+-----------+
-| Name              | Power (W) |
-+-------------------+-----------+
-| dbu               |    15.190 |
-|   cpu_pipeline    |     4.055 |
-|     ALU           |     0.100 |
-|     EX_MEM        |     0.574 |
-|     ID_EX         |     0.254 |
-|     IF_ID         |     0.339 |
-|     MEM_WB        |     0.581 |
-|     ctrl_unit     |     1.234 |
-|     data_mem      |     0.136 |
-|       U0          |     0.136 |
-|     mem_instr     |     0.035 |
-|       U0          |     0.035 |
-|     rIF_ID_NPC    |     0.207 |
-|     register_file |     0.476 |
-|   dec_edge_taker  |     0.009 |
-|   inc_edge_taker  |     0.065 |
-|   nixietube       |     0.578 |
-+-------------------+-----------+
++----------------------+-----------+
+| Name                 | Power (W) |
++----------------------+-----------+
+| dbu                  |    15.257 |
+|   cpu_pipeline       |     8.884 |
+|     EX_MEM           |     0.631 |
+|     ID_EX            |     0.559 |
+|     IF_ID            |     2.846 |
+|     MEM_WB           |     0.533 |
+|     branch_predictor |     1.972 |
+|     data_mem         |     0.034 |
+|       U0             |     0.034 |
+|     mem_instr        |     0.265 |
+|       U0             |     0.265 |
+|     rIF_ID_NPC       |     0.753 |
+|     register_file    |     0.719 |
+|   dec_edge_taker     |     0.009 |
+|   inc_edge_taker     |     0.061 |
+|   nixietube          |     0.341 |
++----------------------+-----------+
 
 

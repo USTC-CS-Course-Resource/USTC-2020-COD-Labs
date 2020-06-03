@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sat May 30 13:58:07 2020
+-- Date        : Wed Jun  3 21:19:57 2020
 -- Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.vhdl
+--               D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.vhdl
 -- Design      : data_mem_256x32
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -2244,7 +2244,7 @@ ram_reg_0_127_31_31: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_3_3: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000008"
+      INIT => X"00000000000000000000000000000000"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2257,7 +2257,7 @@ ram_reg_0_127_3_3: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_4_4: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000000"
+      INIT => X"00000000000000000000000000000008"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),

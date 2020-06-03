@@ -50,11 +50,8 @@ output [4:0] DBU_MEM_WB_WA
 // 控制信号
 //// 控制单元
 wire pc_we;
-wire [1:0] pc_src;
+wire [2:0] pc_src;
 wire flush;
-wire integer flush_counter;
-wire flush_pc_we;
-wire IF_ID_we;
 //// 转发控制器
 wire [1:0] alu_a_src;
 wire [1:0] alu_b_src;
@@ -83,7 +80,6 @@ wire [31:0] ID_EX_IR;
 //// EX/MEM
 wire [1:0] EX_MEM_WB;
 wire [1:0] EX_MEM_M;
-wire [31:0] EX_MEM_NPC;
 wire EX_MEM_ZF;
 wire [31:0] EX_MEM_Y;
 wire [31:0] EX_MEM_B;
@@ -104,13 +100,14 @@ wire [1:0] ctrl_wb;
 wire [3:0] ctrl_ex;
 wire [31:0] rf_rd1;
 wire [31:0] rf_rd2;
-wire shall_branch;
-wire equal;
-//// EX段
 reg [31:0] alu_a;
 reg [31:0] alu_b;
 wire [2:0] alu_m;
 wire [31:0] alu_y;
+wire shall_branch;
+wire equal;
+wire [31:0] im_instr_imm;
+wire flush;
 
 
 // 传输数据给 DBU
@@ -134,20 +131,21 @@ assign DBU_MEM_WB_WA = MEM_WB_WA;
 
 // IF 段
 wire [31:0] im_instr;
+assign im_instr_imm = {{16{im_instr[15]}}, im_instr[15:0]};
 instr_mem_256x32 mem_instr(.a(PC >> 2),
                            .spo(im_instr));
 
 register_syn #(.N(32)) 
     rIF_ID_NPC(.clk(clk),
-               .rst(rst),
-               .we(IF_ID_we && ~stall),
+               .rst(rst || (flush && ~stall)),
+               .we(~stall),
                .wd(PC+4),
                .d(IF_ID_NPC));
               
 register_syn #(.N(32+HIGH+1+1)) 
     IF_ID(.clk(clk),
-          .rst(rst),
-          .we(IF_ID_we && ~stall),
+          .rst(rst || (flush && ~stall)),
+          .we(~stall),
           .wd({im_instr, PC[HIGH+2:2], shall_branch}),
           .d({IF_ID_IR, IF_ID_lowpc, IF_ID_had_branched}));
           
@@ -186,12 +184,14 @@ always @(*) begin
         2'b00: equal_a = rf_rd1;
         2'b01: equal_a = alu_y;
         2'b10: equal_a = mem_out_rd;
+        2'b11: equal_a = EX_MEM_Y;
         default: equal_a = rf_rd1;
     endcase
     case(equal_b_src)
         2'b00: equal_b = rf_rd2;
         2'b01: equal_b = alu_y;
         2'b10: equal_b = mem_out_rd;
+        2'b11: equal_b = EX_MEM_Y;
         default: equal_b = rf_rd2;
     endcase
 end
@@ -220,11 +220,9 @@ control_unit ctrl_unit(.clk(clk),
                        .M(ctrl_m),
                        .EX(ctrl_ex),
                        .pc_src(pc_src),
-                       .flush_counter(flush_counter),
-                       .flush_pc_we(flush_pc_we),
-                       .IF_ID_we(IF_ID_we),
                        .shall_branch(shall_branch),
-                       .had_branched(IF_ID_had_branched));
+                       .had_branched(IF_ID_had_branched),
+                       .flush(flush));
                        
 //// 竞争冲突检测器
 hazard_detection_unit
@@ -242,10 +240,12 @@ always @(posedge clk, posedge rst) begin
     else begin
         if(pc_we == 1'b1) begin
             case(pc_src)
-                2'b00: PC <= PC + 4;
-                2'b01: PC <= IF_ID_NPC + (ID_instr_imm << 2);
-                2'b10: PC <= {IF_ID_NPC[31: 28], ID_instr_25_0_sll_2};
-                2'b11: PC <= PC;
+                3'b000: PC <= PC + 4;
+                3'b001: PC <= IF_ID_NPC + (ID_instr_imm << 2);
+                3'b010: PC <= {IF_ID_NPC[31: 28], ID_instr_25_0_sll_2};
+                3'b011: PC <= PC;
+                3'b100: PC <= PC + 4 + (im_instr_imm << 2);
+                3'b101: PC <= IF_ID_NPC;
                 default: PC <= PC;
             endcase
         end
@@ -265,6 +265,7 @@ forwarding_unit
             .MEM_WB_reg_write(MEM_WB_WB[0]),
             .EX_MEM_reg_write(EX_MEM_WB[0]),
             .ID_EX_reg_write(ID_EX_WB[0]),
+            .EX_MEM_mem_read(EX_MEM_M[0]),
             .alu_src(ID_EX_EX[3]),
             .alu_a_src(alu_a_src),
             .alu_b_src(alu_b_src),

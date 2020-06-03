@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="202986fs"></ZoomStartTime>
-      <ZoomEndTime time="285987fs"></ZoomEndTime>
-      <Cursor1Time time="340000fs"></Cursor1Time>
+      <ZoomStartTime time="243343fs"></ZoomStartTime>
+      <ZoomEndTime time="347332fs"></ZoomEndTime>
+      <Cursor1Time time="330000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="143"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
+      <ValueColumnWidth column_width="77"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
+   <WVObjectSize size="29" />
    <wvobject fp_name="/cpu_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -41,8 +41,8 @@
       <obj_property name="ObjectShortName">DBU_mem_data[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/pc_src" type="array">
-      <obj_property name="ElementShortName">pc_src[1:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_src[1:0]</obj_property>
+      <obj_property name="ElementShortName">pc_src[2:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_src[2:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/DBU_PC" type="array">
@@ -65,12 +65,6 @@
       <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/cpu_pipeline/flush_counter" type="array">
-      <obj_property name="ElementShortName">flush_counter[31:0]</obj_property>
-      <obj_property name="ObjectShortName">flush_counter[31:0]</obj_property>
-      <obj_property name="CustomSignalColor">#800080</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-   </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/ctrl_unit/equal" type="logic">
       <obj_property name="ElementShortName">equal</obj_property>
       <obj_property name="ObjectShortName">equal</obj_property>
@@ -91,8 +85,8 @@
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/ID_EX_M" type="array">
-      <obj_property name="ElementShortName">ID_EX_M[1:0]</obj_property>
-      <obj_property name="ObjectShortName">ID_EX_M[1:0]</obj_property>
+      <obj_property name="ElementShortName">ID_EX_M[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ID_EX_M[3:0]</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
@@ -136,8 +130,8 @@
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/cpu_pipeline/EX_MEM_M" type="array">
-      <obj_property name="ElementShortName">EX_MEM_M[1:0]</obj_property>
-      <obj_property name="ObjectShortName">EX_MEM_M[1:0]</obj_property>
+      <obj_property name="ElementShortName">EX_MEM_M[3:0]</obj_property>
+      <obj_property name="ObjectShortName">EX_MEM_M[3:0]</obj_property>
       <obj_property name="CustomSignalColor">#FF0080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
@@ -145,6 +139,18 @@
    <wvobject fp_name="/cpu_tb/DBU_EX_MEM_B" type="array">
       <obj_property name="ElementShortName">DBU_EX_MEM_B[31:0]</obj_property>
       <obj_property name="ObjectShortName">DBU_EX_MEM_B[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/ALU/a" type="array">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/cpu_pipeline/ALU/b" type="array">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
       <obj_property name="CustomSignalColor">#FF0080</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>

@@ -169,7 +169,7 @@ assign shall_branch = cache[im_instr_lowpc] >= 2'b10 && im_instr_opcode == BEQ_o
 always @(posedge clk, posedge rst) begin
     if(rst) begin
         for(i = 0; i < CACHE_SIZE; i = i + 1) begin
-            cache[i] <= 2'b10;
+            cache[i] <= 2'b01;
         end
     end
     else if(EX_MEM_is_branch) begin

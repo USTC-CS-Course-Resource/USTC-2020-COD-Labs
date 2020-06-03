@@ -45,10 +45,8 @@ output [1:0] M,     // mem_write, mem_read
 output [3:0] EX,     // alu_src, alu_op, reg_dst
 input shall_branch,
 input had_branched,
-output reg [1:0] pc_src,
-output integer flush_counter,
-output reg flush_pc_we,
-output reg IF_ID_we
+output reg [2:0] pc_src,
+output reg flush
 );
 
 reg reg_dst;
@@ -101,37 +99,52 @@ always @(*) begin
 end
 
 always @(*) begin
-    if(flush_counter == 0) begin
-        pc_src = 2'b00;
-    end
-    else if(opcode == BEQ_op && equal) begin
-        pc_src = 2'b01;
-    end
-    else if(opcode == J_op) begin
-        pc_src = 2'b10;
-    end
-    else begin
-        pc_src = 2'b00;
-    end 
-end
-
-always @(*) begin
-    flush_pc_we = (flush_counter == -1 && opcode != BEQ_op && opcode != J_op )
-                  || flush_counter == 1 || flush_counter == 0;
-    IF_ID_we = (flush_counter == -1 && opcode != BEQ_op && opcode != J_op) 
-                     || flush_counter == 0;
-end
-
-always @(posedge clk, posedge rst) begin
-    if(rst) flush_counter <= 0;
-    else begin
-        if(flush_counter > 0) flush_counter <= flush_counter - 1;
-        else if(flush_counter == 0) flush_counter <= -1;
-        else begin
-            if(opcode == J_op) flush_counter <= 0;
-            else if(opcode == BEQ_op) flush_counter <= 1;
-            else flush_counter <= -1;
+    if(opcode == BEQ_op) begin
+        if(equal) begin
+            if(had_branched) begin
+                flush = 1'b0;
+                if(shall_branch) begin
+                    pc_src = 3'b100;
+                end
+                else begin
+                    pc_src = 3'b000;
+                end
+            end
+            else begin
+                pc_src = 3'b001;
+                flush = 1'b1;
+            end
         end
+        else begin
+            if(had_branched) begin
+                flush = 1'b0;
+                pc_src = 3'b101;
+            end
+            else begin
+                flush = 1'b0;
+                if(shall_branch) begin
+                    pc_src = 3'b100;
+                end
+                else begin
+                    pc_src = 3'b000;
+                end
+            end
+        end
+    end
+    else if(shall_branch) begin
+        pc_src = 3'b100;
+        flush = 1'b0;
+    end
+    /*else if(flush_counter == 0) begin
+        pc_src = 3'b000;
+    end*/
+    else if(opcode == J_op) begin
+        pc_src = 3'b010;
+        flush = 1'b1;
+    end
+    else begin
+        pc_src = 3'b000;
+        flush = 1'b0;
     end
 end
 
@@ -164,7 +177,7 @@ assign shall_branch = cache[im_instr_lowpc] >= 2'b10 && im_instr_opcode == BEQ_o
 always @(posedge clk, posedge rst) begin
     if(rst) begin
         for(i = 0; i < CACHE_SIZE; i = i + 1) begin
-            cache[i] <= 2'b10;
+            cache[i] <= 2'b01;
         end
     end
     else if(IF_ID_is_branch) begin

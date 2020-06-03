@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Sat May 30 13:58:07 2020
+// Date        : Wed Jun  3 18:49:18 2020
 // Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               D:/VivadoProject/COD/Lab5/cpu_pipeline/cpu_pipeline.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.v
+//               D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.v
 // Design      : data_mem_256x32
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -1777,7 +1777,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "3" *) 
   (* ram_slice_end = "3" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000008)) 
+    .INIT(128'h00000000000000000000000000000000)) 
     ram_reg_0_127_3_3
        (.A(a[6:0]),
         .D(d[3]),
@@ -1795,7 +1795,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "4" *) 
   (* ram_slice_end = "4" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000000)) 
+    .INIT(128'h00000000000000000000000000000008)) 
     ram_reg_0_127_4_4
        (.A(a[6:0]),
         .D(d[4]),

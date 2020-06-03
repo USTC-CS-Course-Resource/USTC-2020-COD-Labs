@@ -31,9 +31,10 @@ set_property ip_output_repo d:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward
 set_property ip_cache_permissions {read write} [current_project]
 add_files D:/VivadoProject/COD/Lab5/lab3_test/ins.coe
 add_files D:/VivadoProject/COD/Lab5/lab3_test/data.coe
-add_files d:/VivadoProject/COD/Lab5/lab5_test_branch_predictor/ins.coe
-add_files d:/VivadoProject/COD/Lab5/lab5_test/ins.coe
-add_files d:/VivadoProject/COD/Lab5/lab5_test/data.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test_branch_predictor/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test/data.coe
+add_files d:/VivadoProject/COD/Lab5/lab5_test_hzy/ins.coe
 read_verilog -library xil_defaultlib {
   D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/new/ALU.v
   D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/new/alu_control.v

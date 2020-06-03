@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591076540">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591203238">
   <File Type="PA-TCL" Name="dbu.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="dbu_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="dbu_reports.tcl"/>
   <File Type="RDS-RDS" Name="dbu.vds"/>
   <File Type="RDS-UTIL" Name="dbu_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="dbu_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="dbu.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="dbu_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="dbu_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ALU.v">
@@ -119,6 +122,30 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../lab5_test_branch_predictor/ins.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../lab5_test/ins.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../lab5_test/data.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../lab5_test_hzy/ins.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="dbu"/>
@@ -148,6 +175,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="instr_mem_256x32"/>
   <BlockFileSet Type="BlockSrcs" Name="data_mem_256x32"/>
+  <BlockFileSet Type="BlockSrcs" Name="instr_mem_256x32"/>
 </GenRun>

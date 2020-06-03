@@ -117,7 +117,7 @@ always @(*) begin
         end
         else begin
             if(had_branched) begin
-                flush = 1'b0;
+                flush = 1'b1;
                 pc_src = 3'b101;
             end
             else begin

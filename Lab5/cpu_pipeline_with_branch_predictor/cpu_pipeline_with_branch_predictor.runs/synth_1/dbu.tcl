@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param chipscope.maxJobs 2
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -31,6 +32,10 @@ set_property ip_output_repo d:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_p
 set_property ip_cache_permissions {read write} [current_project]
 add_files D:/VivadoProject/COD/Lab5/lab3_test/ins.coe
 add_files D:/VivadoProject/COD/Lab5/lab3_test/data.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test_branch_predictor/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test/data.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test_hzy/ins.coe
 read_verilog -library xil_defaultlib {
   D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/new/ALU.v
   D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/new/alu_control.v
@@ -44,11 +49,11 @@ read_verilog -library xil_defaultlib {
   D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/new/register_file.v
   D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/new/dbu.v
 }
-read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32.xci
-set_property used_in_implementation false [get_files -all d:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32_ooc.xdc]
-
 read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32.xci
 set_property used_in_implementation false [get_files -all d:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_ooc.xdc]
+
+read_ip -quiet D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32.xci
+set_property used_in_implementation false [get_files -all d:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

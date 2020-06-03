@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591190044">
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591203158">
   <File Type="BITSTR-BMM" Name="dbu_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="dbu_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="dbu_timing_summary_init.rpt"/>
@@ -201,6 +201,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../lab5_test/data.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../lab5_test_hzy/ins.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

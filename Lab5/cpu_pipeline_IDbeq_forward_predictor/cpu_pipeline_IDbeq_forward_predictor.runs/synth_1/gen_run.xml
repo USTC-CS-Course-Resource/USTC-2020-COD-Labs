@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591190044">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591203158">
   <File Type="PA-TCL" Name="dbu.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="dbu_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="dbu_reports.tcl"/>
@@ -135,6 +135,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../lab5_test/data.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../lab5_test_hzy/ins.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

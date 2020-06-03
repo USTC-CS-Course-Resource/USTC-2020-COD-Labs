@@ -54,14 +54,14 @@ always @(*) begin
     end
     
     // alu_b_src
-    if(EX_MEM_WA == ID_EX_rt && EX_MEM_reg_write == 1'b1 && EX_MEM_WA != 5'b00000) begin
+    if(alu_src == 1'b1) begin
+        alu_b_src = 2'b01;
+    end
+    else if(EX_MEM_WA == ID_EX_rt && EX_MEM_reg_write == 1'b1 && EX_MEM_WA != 5'b00000) begin
         alu_b_src = 2'b11;
     end
     else if(MEM_WB_WA == ID_EX_rt && MEM_WB_reg_write == 1'b1 && MEM_WB_WA != 5'b00000) begin
         alu_b_src = 2'b10;
-    end
-    else if(alu_src == 1'b1) begin
-        alu_b_src = 2'b01;
     end
     else begin
         alu_b_src = 2'b00;

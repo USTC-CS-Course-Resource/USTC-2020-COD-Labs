@@ -111,6 +111,8 @@ wire [1:0] ctrl_wb;
 wire [3:0] ctrl_ex;
 wire [31:0] rf_rd1;
 wire [31:0] rf_rd2;
+reg [31:0] write_data;
+wire [1:0] write_data_src;
 
 // 传输数据给 DBU
 //// IF_ID段
@@ -247,7 +249,8 @@ forwarding_unit
             .EX_MEM_reg_write(EX_MEM_WB[0]),
             .alu_src(ID_EX_EX[3]),
             .alu_a_src(alu_a_src),
-            .alu_b_src(alu_b_src));
+            .alu_b_src(alu_b_src),
+            .write_data_src(write_data_src));
 
 always @(*) begin
     case(alu_a_src)
@@ -262,6 +265,12 @@ always @(*) begin
         2'b10: alu_b = WB_wb_data;
         2'b11: alu_b = EX_MEM_Y;
         default: alu_b = ID_EX_B;
+    endcase
+    case(write_data_src)
+        2'b00: write_data = ID_EX_B;
+        2'b10: write_data = WB_wb_data;
+        2'b11: write_data = EX_MEM_Y;
+        default: write_data = ID_EX_B;
     endcase
 end
 alu_control alu_control(.funct(ID_EX_IR[5:0]),
@@ -281,7 +290,7 @@ register_syn #(.N(2+4+1+32+32+5+32+(HIGH+1)+32))
            .rst(rst || flush_IF_to_EX),
            .we(1'b1),
            .wd({ID_EX_WB, ID_EX_M, alu_zf, alu_y, 
-                ID_EX_B, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11],
+                write_data, ID_EX_EX[0] == 1'b0 ? ID_EX_IR[20:16] : ID_EX_IR[15:11],
                 ID_EX_NPC + (ID_EX_IMM << 2), ID_EX_lowpc, ID_EX_NPC}),
            .d({EX_MEM_WB, EX_MEM_M, EX_MEM_ZF, EX_MEM_Y, EX_MEM_B, EX_MEM_WA, EX_MEM_NPC_, EX_MEM_lowpc, EX_MEM_NPC}));
 

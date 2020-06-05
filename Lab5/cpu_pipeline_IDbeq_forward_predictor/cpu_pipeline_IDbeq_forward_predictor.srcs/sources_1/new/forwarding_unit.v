@@ -38,7 +38,8 @@ output reg [1:0] alu_b_src,
 // ID段 beq源操作数的转发
 input [31:0] IF_ID_IR,
 output reg [1:0] equal_a_src,
-output reg [1:0] equal_b_src
+output reg [1:0] equal_b_src,
+output reg [1:0] write_data_src
 );
 
 always @(*) begin
@@ -65,6 +66,17 @@ always @(*) begin
     end
     else begin
         alu_b_src = 2'b00;
+    end
+    
+    // write_data_src
+    if(EX_MEM_WA == ID_EX_rt && EX_MEM_reg_write == 1'b1 && EX_MEM_WA != 5'b00000) begin
+        write_data_src = 2'b11;
+    end
+    else if(MEM_WB_WA == ID_EX_rt && MEM_WB_reg_write == 1'b1 && MEM_WB_WA != 5'b00000) begin
+        write_data_src = 2'b10;
+    end
+    else begin
+        write_data_src = 2'b00;
     end
     
     // equal_a_src

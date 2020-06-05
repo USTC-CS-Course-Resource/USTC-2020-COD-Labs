@@ -120,7 +120,7 @@ module cpu_tb();
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
-        repeat(200) begin
+        repeat(1) begin
             clk = ~clk; #5; clk = ~clk; #5;
         end
         

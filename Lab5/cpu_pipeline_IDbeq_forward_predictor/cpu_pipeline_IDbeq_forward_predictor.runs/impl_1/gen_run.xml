@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1591203158">
+  <File Type="BITSTR-BMM" Name="dbu_bd.bmm"/>
   <File Type="ROUTE-PWR" Name="dbu_power_routed.rpt"/>
   <File Type="PA-TCL" Name="dbu.tcl"/>
-  <File Type="BITSTR-BMM" Name="dbu_bd.bmm"/>
+  <File Type="OPT-DCP" Name="dbu_opt.dcp"/>
   <File Type="ROUTE-PWR-SUM" Name="dbu_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="dbu_reports.tcl"/>
-  <File Type="OPT-DCP" Name="dbu_opt.dcp"/>
   <File Type="OPT-DRC" Name="dbu_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="dbu.hwdef"/>
   <File Type="PWROPT-DCP" Name="dbu_pwropt.dcp"/>
@@ -24,21 +24,21 @@
   <File Type="ROUTE-BLACKBOX-DCP" Name="dbu_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="dbu_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="dbu_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="dbu_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="dbu.ltx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="dbu_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="dbu_drc_routed.rpx"/>
   <File Type="BITSTR-MMI" Name="dbu.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="dbu_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="dbu_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="dbu_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="dbu.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="dbu_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="dbu_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="dbu_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="dbu_route_status.pb"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="dbu_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="dbu_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="dbu_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-CLK" Name="dbu_clock_utilization_routed.rpt"/>
   <File Type="RDI-RDI" Name="dbu.vdi"/>
+  <File Type="ROUTE-CLK" Name="dbu_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="dbu_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="dbu_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="dbu_bus_skew_routed.rpx"/>
@@ -49,8 +49,8 @@
   <File Type="BITSTR-NKY" Name="dbu.nky"/>
   <File Type="PDI-FILE" Name="dbu.pdi"/>
   <File Type="RCFI_FILE" Name="dbu.rcfi"/>
-  <File Type="CFI_FILE" Name="dbu.cfi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="CFI_FILE" Name="dbu.cfi"/>
   <File Type="RNPI_FILE" Name="dbu.rnpi"/>
   <File Type="NPI_FILE" Name="dbu.npi"/>
   <File Type="RBD_FILE" Name="dbu.rbd"/>

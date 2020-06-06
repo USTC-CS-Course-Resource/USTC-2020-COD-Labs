@@ -133,7 +133,7 @@ initial begin
         clk = ~clk; #5; clk = ~clk; #5;
     end
     
-    DBU_mem_rf_addr = 32'h0000_0002;
+    DBU_mem_rf_addr = 32'h0000_0009;
     clk = ~clk; #5; clk = ~clk; #5;
     clk = ~clk; #5; clk = ~clk; #5;
     $finish;

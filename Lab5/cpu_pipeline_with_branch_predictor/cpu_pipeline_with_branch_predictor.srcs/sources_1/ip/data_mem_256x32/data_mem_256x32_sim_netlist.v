@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Wed Jun  3 21:19:57 2020
+// Date        : Sat Jun  6 10:31:35 2020
 // Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.v
@@ -1321,7 +1321,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "0" *) 
   (* ram_slice_end = "0" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000080)) 
+    .INIT(128'h0000000000000000000000000000008A)) 
     ram_reg_0_127_0_0
        (.A(a[6:0]),
         .D(d[0]),
@@ -1525,7 +1525,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "1" *) 
   (* ram_slice_end = "1" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000002)) 
+    .INIT(128'h0000000000000000000000000000000C)) 
     ram_reg_0_127_1_1
        (.A(a[6:0]),
         .D(d[1]),
@@ -1723,7 +1723,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "2" *) 
   (* ram_slice_end = "2" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000082)) 
+    .INIT(128'h00000000000000000000000000000080)) 
     ram_reg_0_127_2_2
        (.A(a[6:0]),
         .D(d[2]),
@@ -1795,7 +1795,7 @@ module data_mem_256x32_dpram
   (* ram_slice_begin = "4" *) 
   (* ram_slice_end = "4" *) 
   RAM128X1D #(
-    .INIT(128'h00000000000000000000000000000008)) 
+    .INIT(128'h00000000000000000000000000000000)) 
     ram_reg_0_127_4_4
        (.A(a[6:0]),
         .D(d[4]),

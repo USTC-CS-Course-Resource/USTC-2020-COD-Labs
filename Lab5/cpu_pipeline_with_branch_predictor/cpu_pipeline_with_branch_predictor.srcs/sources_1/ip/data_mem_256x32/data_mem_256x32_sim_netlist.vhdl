@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Wed Jun  3 21:19:57 2020
+-- Date        : Sat Jun  6 10:31:35 2020
 -- Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               D:/VivadoProject/COD/Lab5/cpu_pipeline_with_branch_predictor/cpu_pipeline_with_branch_predictor.srcs/sources_1/ip/data_mem_256x32/data_mem_256x32_sim_netlist.vhdl
@@ -1910,7 +1910,7 @@ begin
     );
 ram_reg_0_127_0_0: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000080"
+      INIT => X"0000000000000000000000000000008A"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2062,7 +2062,7 @@ ram_reg_0_127_19_19: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_1_1: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000002"
+      INIT => X"0000000000000000000000000000000C"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2205,7 +2205,7 @@ ram_reg_0_127_29_29: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_2_2: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000082"
+      INIT => X"00000000000000000000000000000080"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),
@@ -2257,7 +2257,7 @@ ram_reg_0_127_3_3: unisim.vcomponents.RAM128X1D
     );
 ram_reg_0_127_4_4: unisim.vcomponents.RAM128X1D
     generic map(
-      INIT => X"00000000000000000000000000000008"
+      INIT => X"00000000000000000000000000000000"
     )
         port map (
       A(6 downto 0) => a(6 downto 0),

@@ -34,7 +34,9 @@ add_files D:/VivadoProject/COD/Lab5/lab3_test/data.coe
 add_files D:/VivadoProject/COD/Lab5/lab5_test_branch_predictor/ins.coe
 add_files D:/VivadoProject/COD/Lab5/lab5_test/ins.coe
 add_files D:/VivadoProject/COD/Lab5/lab5_test/data.coe
-add_files d:/VivadoProject/COD/Lab5/lab5_test_hzy/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test_hzy/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test2/ins.coe
+add_files D:/VivadoProject/COD/Lab5/lab5_test2/data.coe
 read_verilog -library xil_defaultlib {
   D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/new/ALU.v
   D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/new/alu_control.v
@@ -65,6 +67,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/constrs_1/imports/VivadoProject/Nexys-4-DDR-Master.xdc
 set_property used_in_implementation false [get_files D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/constrs_1/imports/VivadoProject/Nexys-4-DDR-Master.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

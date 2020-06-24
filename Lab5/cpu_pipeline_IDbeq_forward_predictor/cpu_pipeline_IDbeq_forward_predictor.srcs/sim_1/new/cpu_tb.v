@@ -68,7 +68,7 @@ module cpu_tb();
         
         // _start:
         DBU_mem_rf_addr = 32'h0000_0008;
-        DBU_mem_rf_addr = 32'h0000_0010;
+        DBU_mem_rf_addr = 32'h0000_0009;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;
         clk = ~clk; #5; clk = ~clk; #5;

@@ -197,7 +197,7 @@ always @(*) begin
         default: equal_b = rf_rd2;
     endcase
 end
-                            
+
 //// ID/EX ¶Î¼ä¼Ä´æÆ÷
 wire [1:0] ctrl_wb_in;
 wire [1:0] ctrl_m_in;

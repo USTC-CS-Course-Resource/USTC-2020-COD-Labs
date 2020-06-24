@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sat Jun  6 10:18:26 2020
+-- Date        : Wed Jun  3 23:43:55 2020
 -- Host        : DESKTOP-CK1FK5P running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               D:/VivadoProject/COD/Lab5/cpu_pipeline_IDbeq_forward_predictor/cpu_pipeline_IDbeq_forward_predictor.srcs/sources_1/ip/instr_mem_256x32/instr_mem_256x32_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top instr_mem_256x32 -prefix
+--               instr_mem_256x32_ instr_mem_256x32_stub.vhdl
 -- Design      : instr_mem_256x32
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

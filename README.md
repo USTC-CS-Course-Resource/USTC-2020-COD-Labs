@@ -1,5 +1,7 @@
 # USTC-COD-Experiment
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/RabbitWhite1/USTC-Health-Report/blob/master/LICENSE)
+
 This repository contains my COD experiments' codes in verilog.
 Projects are created with Vivado 2019.
 
